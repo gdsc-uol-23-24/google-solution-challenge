@@ -60,7 +60,7 @@ You will also notice a new folder called `.expo` appear in your project director
 
 # Contributing
 
-The master branch contains the most up-to-date and stable version of the code. **Do not work directly on it**; instead, create a new branch or work on another related existing one for every significant change you would like to commit.
+The `main` branch contains the most up-to-date and stable version of the code. **Do not work directly on it**; instead, create a new branch or work on another related existing one for every significant change you would like to commit.
 
 Some conventions to follow for naming branches:
 - **Feature branches** are used for developing new features. Use the prefix `feature/`. For instance, `feature/literacy-test`.
