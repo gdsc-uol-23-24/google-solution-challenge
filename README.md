@@ -36,7 +36,7 @@ On your **smartphone**, you will need to have installed:
 
 Once you have cloned the repository, open your terminal and navigate into the project directory.
 
-> `cd ilta-starter`
+> `cd google-solution-challenge`
 
 Install the required packages for the project locally by running:
 
