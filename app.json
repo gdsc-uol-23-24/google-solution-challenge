@@ -25,6 +25,15 @@
     },
     "web": {
       "favicon": "./src/assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-font",
+        {
+          "family": "ProductSans-Bold",
+          "source": "./src/assets/fonts/ProductSans-Bold.ttf"
+        }
+      ]
+    ]
   }
 }
