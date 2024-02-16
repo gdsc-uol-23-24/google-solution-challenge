@@ -30,8 +30,7 @@
       [
         "expo-font",
         {
-          "family": "ProductSans-Bold",
-          "source": "./src/assets/fonts/ProductSans-Bold.ttf"
+          "fonts": ["./src/assets/fonts/ProductSans-Bold.ttf", "./src/assets/fonts/ProductSans-Regular.ttf"]
         }
       ]
     ]
