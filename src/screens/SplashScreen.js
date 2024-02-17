@@ -1,45 +1,23 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
-import Button from '../components/Button';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
+import styles from '../assets/stylesheet/styles';
 
 const SplashScreen = ({ navigation }) => {
-    const navigateToHome = () => {
-        // Navigate to the home screen
-        navigation.replace('Home');
-    };
-
-    return (
-        <View style={styles.container}>
-            <Image source={require('../assets/images/allwrite.png')} style={styles.image} />
-            <Text style={styles.h1}>Welcome to AllWrite.</Text>
-            <Text style={styles.h2}>Literacy assessment for children, made easy through art.</Text>
-            <Button onPress={navigateToHome} text='Get started'/>
-        </View>
+  const navigateToHome = () => {
+    // Navigate to the Home screen
+    navigation.replace('Home');
+  };
+  
+  return (
+    <View style={styles.container}>
+      <Image source={require('../assets/images/allwrite.png')} style={styles.logoLarge} />
+      <Text style={styles.h1}>Welcome to AllWrite.</Text>
+      <Text style={styles.body}>Literacy assessment for children, made easy through art.</Text>
+      <TouchableOpacity style={styles.button} onPress={navigateToHome}>
+          <Text style={styles.buttonText}>Get started →</Text>
+        </TouchableOpacity>
+    </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  image: {
-    width: 150, 
-    height: 150, 
-    resizeMode: 'contain',
-    marginBottom: -30,
-  },
-  h1: {
-    fontSize: 36,
-    fontWeight: 'bold',
-    // fontFamily: 'ProductSans-Bold',
-    textAlign: 'center'
-  },
-  h2: {
-    fontSize: 20,
-    textAlign: 'center'
-  }
-});
 
 export default SplashScreen;
