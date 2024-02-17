@@ -27,18 +27,18 @@ const styles = StyleSheet.create({
   },
   h1: {
     fontSize: 36,
-    fontFamily: 'RobotoCondensed_700Bold',
+    // fontFamily: 'RobotoCondensed_700Bold',
     textAlign: 'center',
   },
   h2: {
     fontSize: 26,
-    fontFamily: 'RobotoCondensed_700Bold',
+    // fontFamily: 'RobotoCondensed_700Bold',
     textAlign: 'left',
     marginBottom: 5,
   },
   body: {
     fontSize: 16,
-    fontFamily: 'Roboto_400Regular',
+    // fontFamily: 'Roboto_400Regular',
   },
   button: {
     backgroundColor: '#3652AD',
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'white',
     fontSize: 16,
-    fontFamily: 'Roboto_400Regular',
+    // fontFamily: 'Roboto_400Regular',
     fontWeight: 'bold',
   },
   imageContainer: { 
