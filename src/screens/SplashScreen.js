@@ -30,7 +30,7 @@ const SplashScreen = ({ navigation }) => {
     <View style={styles.container}>
       <Image source={splashImages[currentImage]} style={styles.splashLogo} />
       <Text style={styles.h1}>Welcome to LiteraDraw!</Text>
-      <Text style={styles.body}>Literacy assessment for children, made easy through art.</Text>
+      <Text style={[styles.body, {textAlign: 'center'}]}>Literacy assessment for children, made easy through art.</Text>
       <TouchableOpacity style={styles.button} onPress={navigateToHome}>
           <Text style={styles.buttonText}>Get started →</Text>
         </TouchableOpacity>

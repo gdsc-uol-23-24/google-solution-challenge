@@ -57,13 +57,12 @@ const styles = StyleSheet.create({
   h2: {
     fontSize: 24,
     fontFamily: 'DMSans_700Bold',
-    textAlign: 'center',
+    textAlign: 'left',
     marginBottom: 5,
   },
   body: {
     fontSize: 18,
     fontFamily: 'DMSans_400Regular',
-    textAlign: 'center',
     marginBottom: 5,
   },
   // ***
