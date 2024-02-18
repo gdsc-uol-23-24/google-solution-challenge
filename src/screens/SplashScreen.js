@@ -28,12 +28,25 @@ const SplashScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Image source={splashImages[currentImage]} style={styles.splashLogo} />
+
+      {/* Animated graphic */}
+      <Image
+        source={splashImages[currentImage]}
+        style={styles.splashLogo}
+      />
+
+      {/* App welcome message */}
       <Text style={styles.h1}>Welcome to LiteraDraw!</Text>
-      <Text style={[styles.body, {textAlign: 'center'}]}>Literacy assessment for children, made easy through art.</Text>
+      <Text style={[styles.body, {textAlign: 'center'}]}>
+        Literacy assessment for children,{'\n'}
+        made easy through art.
+      </Text>
+
+      {/* Entry point button */}
       <TouchableOpacity style={styles.button} onPress={navigateToHome}>
           <Text style={styles.buttonText}>Get started →</Text>
-        </TouchableOpacity>
+      </TouchableOpacity>
+      
     </View>
   );
 };
