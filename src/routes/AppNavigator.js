@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import SplashScreen from '../screens/SplashScreen';
 import HomeScreen from '../screens/HomeScreen';
 import LiteracyAssessmentScreen from '../screens/LiteracyAssessmentScreen';
+import AppHeader from '../components/AppHeader';
 
 const Stack = createStackNavigator();
 
@@ -19,21 +20,22 @@ const AppNavigator = () => {
         <Stack.Screen
           name='Home'
           component={HomeScreen}
-          options={{
-            title: 'App name',
+          options={({ route }) => ({
             headerStyle: {
-              backgroundColor: '#3652AD',
+              backgroundColor: '#A4BBF4',
             },
-            headerTintColor: '#fff',
-            headerTitleStyle: {
-              //
-            },
-          }}
-          />
+            headerTitle: () => <AppHeader title={route.name} />,
+          })}
+        />
         <Stack.Screen
-          name='Assessment'
+          name='Literacy Assessment'
           component={LiteracyAssessmentScreen}
-          options={{headerShown: false}}
+          options={({ route }) => ({
+            headerStyle: {
+              backgroundColor: '#A4BBF4',
+            },
+            headerTitle: () => <AppHeader title={route.name} />,
+          })}
         />
 
       </Stack.Navigator>

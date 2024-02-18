@@ -5,7 +5,7 @@ import styles from '../assets/stylesheet/styles';
 const HomeScreen = ({ navigation }) => {
   const navigateToAssessment = () => {
     // Navigate to the Assessment screen
-    navigation.replace('Assessment');
+    navigation.replace('Literacy Assessment');
   };
   return (
     <View style={styles.content}>
@@ -22,13 +22,13 @@ const HomeScreen = ({ navigation }) => {
         </TouchableOpacity>
       </View>
 
-      {/* Resources section */}
+      {/* Resources section
       <View style={styles.section}>
         <Text style={styles.h2}>Resources</Text>
         <Text style={styles.body}>
           TBD
         </Text>
-      </View>
+      </View> */}
       
     </View>
   );

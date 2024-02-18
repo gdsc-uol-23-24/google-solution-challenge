@@ -2,11 +2,12 @@ import { StyleSheet } from "react-native";
 
 // Define styles
 const styles = StyleSheet.create({
+  // Splash screen styles
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#E6EDFD',
+    backgroundColor: '#A4BBF4',
     padding: 20,
   },
   splashLogo: {
@@ -15,18 +16,37 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     marginBottom: -5,
   },
-  navLogo: {
-    // pending
+  // ***
+  // App header styles
+  headerItems: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
+  headerLogo: {
+    width: 50,
+    height: 50,
+    marginRight: 8,
+    resizeMode: 'contain'
+  },
+  headerTitle: {
+    fontSize: 20,
+    fontFamily: 'DMSans_700Bold',
+    color: 'black',
+  },
+  // ***
+  // Home screen styles
   content: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#E6EDFD',
+    backgroundColor: 'white',
   },
   section: {
     marginTop: 5,
     marginBottom: 10,
   },
+  // ***
+  // Text styles
   h1: {
     fontSize: 36,
     fontFamily: 'DMSans_700Bold',
@@ -35,17 +55,18 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   h2: {
-    fontSize: 26,
-    // fontFamily: 'RobotoCondensed_700Bold',
-    textAlign: 'center',
+    fontSize: 24,
+    fontFamily: 'DMSans_700Bold',
+    textAlign: 'left',
     marginBottom: 5,
   },
   body: {
     fontSize: 18,
     fontFamily: 'DMSans_400Regular',
-    textAlign: 'center',
     marginBottom: 5,
   },
+  // ***
+  // Button styles
   button: {
     backgroundColor: '#2D4278',
     width: '100%',
@@ -57,10 +78,12 @@ const styles = StyleSheet.create({
     marginTop: 10
   },
   buttonText: {
-    color: 'white',
     fontSize: 18,
     fontFamily: 'DMSans_700Bold',
+    color: 'white',
   },
+  // ***
+  // Image styles
   imageContainer: { 
     marginTop: 20,
   }, 
