@@ -5,7 +5,7 @@ import styles from '../assets/stylesheet/styles';
 const HomeScreen = ({ navigation }) => {
   const navigateToAssessment = () => {
     // Navigate to the Assessment screen
-    navigation.replace('Assessment');
+    navigation.replace('Literacy Assessment');
   };
   return (
     <View style={styles.content}>
