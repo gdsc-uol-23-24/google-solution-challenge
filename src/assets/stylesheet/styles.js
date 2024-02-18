@@ -6,20 +6,22 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#E6EDFD',
+    padding: 20,
   },
-  logoLarge: {
-    width: 150, 
-    height: 150, 
+  splashLogo: {
+    width: 250, 
+    height: 250, 
     resizeMode: 'contain',
-    marginBottom: -30,
+    marginBottom: -5,
   },
-  logoSmall: {
+  navLogo: {
     // pending
   },
   content: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#E6EDFD',
   },
   section: {
     marginTop: 5,
@@ -27,33 +29,37 @@ const styles = StyleSheet.create({
   },
   h1: {
     fontSize: 36,
-    fontFamily: 'RobotoCondensed_700Bold',
+    fontFamily: 'DMSans_700Bold',
     textAlign: 'center',
+    lineHeight: 40,
+    marginBottom: 5,
   },
   h2: {
     fontSize: 26,
-    fontFamily: 'RobotoCondensed_700Bold',
-    textAlign: 'left',
+    // fontFamily: 'RobotoCondensed_700Bold',
+    textAlign: 'center',
     marginBottom: 5,
   },
   body: {
-    fontSize: 16,
-    fontFamily: 'Roboto_400Regular',
+    fontSize: 18,
+    fontFamily: 'DMSans_400Regular',
+    textAlign: 'center',
+    marginBottom: 5,
   },
   button: {
-    backgroundColor: '#3652AD',
+    backgroundColor: '#2D4278',
+    width: '100%',
     paddingHorizontal: 20,
     paddingVertical: 15,
     borderRadius: 5,
     alignItems: 'center',
     marginVertical: 10,
-    marginTop: 15
+    marginTop: 10
   },
   buttonText: {
     color: 'white',
-    fontSize: 16,
-    fontFamily: 'Roboto_400Regular',
-    fontWeight: 'bold',
+    fontSize: 18,
+    fontFamily: 'DMSans_700Bold',
   },
   imageContainer: { 
     marginTop: 20,

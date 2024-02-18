@@ -9,12 +9,13 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@expo-google-fonts/dm-sans": "^0.2.3",
     "@expo-google-fonts/roboto": "^0.2.3",
     "@expo-google-fonts/roboto-condensed": "^0.2.3",
     "@react-navigation/native": "^6.1.10",
     "@react-navigation/stack": "^6.3.21",
     "expo": "~50.0.6",
-    "expo-font": "~11.10.2",
+    "expo-font": "~11.10.3",
     "expo-image-picker": "^14.7.1",
     "expo-status-bar": "~1.11.1",
     "react": "18.2.0",
