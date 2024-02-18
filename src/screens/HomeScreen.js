@@ -22,13 +22,13 @@ const HomeScreen = ({ navigation }) => {
         </TouchableOpacity>
       </View>
 
-      {/* Resources section */}
+      {/* Resources section
       <View style={styles.section}>
         <Text style={styles.h2}>Resources</Text>
         <Text style={styles.body}>
           TBD
         </Text>
-      </View>
+      </View> */}
       
     </View>
   );
