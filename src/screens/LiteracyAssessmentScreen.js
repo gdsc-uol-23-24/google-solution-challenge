@@ -1,20 +1,63 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, FlatList } from 'react-native';
+import { View, Text, TouchableOpacity, FlatList, Alert } from 'react-native';
 import styles from '../assets/stylesheet/styles';
 import ImagePickerButton from '../components/ImagePicker';
 import { Picker } from '@react-native-picker/picker';
 
 const LiteracyAssessmentScreen = ({ navigation }) => {
-  const [image, setImage] = useState(null);
-  const [age, setAge] = useState('4-5');  // Hardcoded age for testing
-
+  // Navigate back to home
   const navigateToHome = () => {
     navigation.replace('Home');
   };
 
+  // States for age and uploaded image
   const [selectedAge, setSelectedAge] = useState();
+  const [uploadedImage, setUploadedImage] = useState(null);
 
-  // Define assessment steps in array
+  // Handle image selection from ImagePicker
+  const handleImageUpload = (imageData) => {
+    setUploadedImage(imageData);
+    console.log('Selected Image Data:', imageData);
+  };
+
+  // Function to generate results
+  const generateResults = () => {
+    // Check that both age and image fields are populated
+    if (!selectedAge || !uploadedImage) {
+      Alert.alert("Please select age and upload an image.");
+      return;
+    }
+    
+    // Assign backend endpoint
+    const backendUrl = '/api/process_data';
+
+    // Construct the data to send to backend
+    const dataToSend = {
+      age: selectedAge,
+      image: uploadedImage,
+    };
+
+    // Make a POST request to the backend
+    fetch(backendUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(dataToSend),
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Backend response:', data);
+        // Navigate to Results screen to display data
+        navigation.navigate('Results', { responseData: data });
+      })
+      .catch(error => {
+        console.error('Error sending data to backend:', error);
+        Alert.alert('Error occurred while generating results');
+      });
+  };
+
+  // Assessment steps to display in FlatList
   const steps = [
     {
       title: 'Select age range',
@@ -62,7 +105,7 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
           <Text style={styles.body}>
             Upload a clear picture of your student's final drawing.
           </Text>
-          <ImagePickerButton />
+          <ImagePickerButton onImageSelected={handleImageUpload}/>
         </>
       ),
     },
@@ -77,7 +120,7 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
           </Text>
           <TouchableOpacity
             style={[styles.button]}
-            onPress={navigateToHome}>
+            onPress={generateResults}>
             <Text style={styles.buttonText}>⟳ Generate results</Text>
           </TouchableOpacity>
         </>
@@ -91,26 +134,20 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
     </View>
   );
 
-
   return (
     <View style={styles.content}>
-
-
-        {/* Go back to home */}
-        <TouchableOpacity
-          style={[styles.button, {backgroundColor: 'darkgrey'}]}
-          onPress={navigateToHome}>
-            <Text style={styles.buttonText}>← Not ready? Go back</Text>
-        </TouchableOpacity>
-
-        {/* Render assessment steps with FlatList */}
-        <FlatList
-          data={steps}
-          renderItem={renderItem}
-          keyExtractor={(item, index) => index.toString()}
-        />
-
-
+      {/* Go back to home */}
+      <TouchableOpacity
+        style={[styles.button, {backgroundColor: 'darkgrey'}]}
+        onPress={navigateToHome}>
+         <Text style={styles.buttonText}>← Not ready? Go back</Text>
+      </TouchableOpacity>
+      {/* Render assessment steps with FlatList */}
+      <FlatList
+        data={steps}
+        renderItem={renderItem}
+        keyExtractor={(item, index) => index.toString()}
+      />
     </View>
   );
 };
