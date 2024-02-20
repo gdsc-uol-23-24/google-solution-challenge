@@ -15,14 +15,22 @@ class ShapeClassifier:
         self.IMG_HEIGHT = 28
         self.CLASSES = ["circle", "square", "triangle"]
 
-        # Accuracy:
-        self.ACTUAL = {"c": 0, "s": 1, "t": 2}
-        self.SHAPE_ACCURACY = 0
-        self.RATE_ACCURACY = 0
-
-        # Shapes:
+        # Contours:
         self.shapes = []
-        self.detected = []
+
+        # Shape name (key) : Rating (value)
+        self.detected = {}
+
+        # Age:
+        self.age = {
+            "3-4": self.CLASSES[0],
+            "4-5": self.CLASSES[:2],
+            "5-6": self.CLASSES[:],
+            "6-7": self.CLASSES[:],
+            "7-8": self.CLASSES[:],
+            "8-9": self.CLASSES[:],
+            "9-10": self.CLASSES[:]
+        }
 
         # Load pre-trained models
         self.model = tf.keras.models.load_model('Models/class.h5')
@@ -121,30 +129,84 @@ class ShapeClassifier:
             elif self.CLASSES[index] == "triangle":
                 model = self.model_t
 
-            # Make predictions using the selected model
+            # Make predictions using the selected model for rating:
             predictions = model.predict(image)
             predicted_class_index = np.argmax(predictions)
 
             return predicted_class_index
-        else:
-            return -1
 
-    def calculate_accuracy(self, image_name, shape_index, grade_index):
-        # Calculate accuracy based on the actual class and predicted class
-        for s, i in self.ACTUAL.items():
-            if s in image_name:
-                self.SHAPE_ACCURACY += 1 if i == shape_index else 0
+    def populate_json(self, age_group):
+        
+        # Initializing the JSON output
+        json_output = {
+            "age_group": age_group,
+            "requirements_met": [],
+            "additional_info": []
+        }
 
-        # Calculate accuracy based on the actual grade and predicted grade
-        for s, i in self.ACTUAL.items():
-            if str(i) in image_name:
-                self.RATE_ACCURACY += 1 if i == grade_index else 0
+        # Feedback for each shape (I will add new ones, let it be like this for now)
+        feedback_dicts = {
+            "circle": {
+                0: "Circle 0",
+                1: "Circle 1",
+                2: "Circle 2"
+            },
+            "square": {
+                0: "square 0",
+                1: "square 1",
+                2: "square 2"
+            },
+            "triangle": {
+                0: "triangle 0",
+                1: "triangle 1",
+                2: "triangle 2"
+            }
+        }
 
-    def main(self, shapes_path="path/to/your/shapes", confidence_threshold=0.5):
+        # Retrieving the shapes required for the specified age group
+        required_shapes = self.age.get(age_group, [])
 
+        # Loop over all the detected shapes
+        for shape, rating in self.detected.items():
+            feedback_dict = feedback_dicts[
+                shape]  # Directly access the dictionary, assuming that our model rejected others
+            entry = {
+                "shape_name": shape,
+                "rating": str(rating),
+                "feedback": feedback_dict[rating]
+            }
+
+            if shape in required_shapes:
+                json_output["requirements_met"].append(entry)
+            else:
+                json_output["additional_info"].append(entry)
+
+
+        # Add shapes that are not detected:
+        for shape in self.CLASSES:
+            if shape not in self.detected:
+                feedback_dict = feedback_dicts[
+                    shape]
+                entry = {
+                    "shape_name": shape,
+                    "rating": "0",
+                    "feedback": feedback_dict[0]
+                }
+
+                if shape in required_shapes:
+                    json_output["requirements_met"].append(entry)
+                else:
+                    json_output["additional_info"].append(entry)
+
+        # Return the JSON output
+        return json_output
+
+    def main(self, shapes_path="path/to/your/shapes", age_group="3-4", confidence_threshold=0.6):
+
+        # Step 1: Extract shapes from drawing:
         self.extraction(shapes_path)
 
-        # Process each image
+        # Process each shape:
         for i, image in enumerate(self.shapes):
             # Convert PIL Image to PNG format in-memory
             png_buffer = BytesIO()
@@ -154,39 +216,27 @@ class ShapeClassifier:
             png_image = Image.open(png_buffer)
             preprocessed = self.preprocess_image(png_image)
 
-            # Make predictions using the main model
+            # Step 2: Make predictions using the main model to classify the shape:
             predictions = self.model.predict(preprocessed)
             predicted_class_index = np.argmax(predictions)
 
             if np.max(predictions) < confidence_threshold:
-                print(f"Image {i + 1}: Rejected - Low confidence in all classes.")
                 continue  # Skip further processing for this image
 
+            # Step 3: Make a grading prediction for the current shape:
             if self.CLASSES[predicted_class_index] not in self.detected:
                 # Grade the drawing based on the predicted class
                 graded_index = self.grade(predicted_class_index, preprocessed)
 
                 # Add to the list of detected shapes:
-                self.detected.append(self.CLASSES[predicted_class_index])
+                # Add shapes name as key, and the value as its rating:
+                self.detected[self.CLASSES[predicted_class_index]] = graded_index
 
-                # Calculate accuracy and print results
-                if graded_index != -1:
-                    print(
-                        f"Image {i + 1}: \n"
-                        f"Predicted Shape: {self.CLASSES[predicted_class_index].title()}.\n"
-                        f"Predicted Grade: {graded_index}.")
-            else:
-                print(f"Shape: {self.CLASSES[predicted_class_index]} already detected.")
-
-        # # Print final accuracy results
-        # print(f"\n Shape Correctness: {self.SHAPE_ACCURACY} / {len(os.listdir(shapes_path))}")
-        # print(f"\n Shape Accuracy: {round(self.SHAPE_ACCURACY / len(os.listdir(shapes_path)) * 100)} %")
-        #
-        # print(f"\n Grade Correctness: {self.RATE_ACCURACY} / {len(os.listdir(shapes_path))}")
-        # print(f"\n Grade Accuracy: {round(self.RATE_ACCURACY / len(os.listdir(shapes_path)) * 100)} %")
+        # Return JSON:
+        return self.populate_json(age_group)
 
 
 if __name__ == "__main__":
     # Create an instance of the ShapeClassifier class and run the main method
     shape_classifier = ShapeClassifier()
-    shape_classifier.main("sketch_hd_2.jpg", confidence_threshold=0.7)
+    shape_classifier.main("sketch.png", "6-7")

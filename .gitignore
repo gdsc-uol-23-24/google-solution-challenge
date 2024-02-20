@@ -33,3 +33,12 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+# Virtual environment
+backend/venv/
+
+# Other files or folders you want to ignore
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
