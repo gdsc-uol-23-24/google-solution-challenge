@@ -58,7 +58,8 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontFamily: 'DMSans_700Bold',
     textAlign: 'left',
-    marginBottom: 5,
+    marginTop: 5,
+    marginBottom: 10,
   },
   body: {
     fontSize: 18,

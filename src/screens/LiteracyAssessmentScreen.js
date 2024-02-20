@@ -22,7 +22,7 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
             <Text style={styles.buttonText}>← Back to home</Text>
         </TouchableOpacity>
 
-        {/* 1. Select age range */}
+        {/* Step 1: Select age range */}
         <Text style={styles.h2}>
           Step 1
         </Text>
@@ -45,21 +45,29 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
           <Picker.Item label="10–11" value="10to11" />
         </Picker>
 
-        {/* 2. Display image to copy */}
-        <Text style={styles.h2}>Literacy Assessment</Text>
+        {/* Step 2. Display image to copy */}
+        <Text style={styles.h2}>
+          Step 2
+        </Text>
         <Text style={styles.body}>
-            - Ask your student to draw the picture below.
-            [picture pending]
+            Provide your student with a pencil,
+            a blank white sheet of paper, and a
+            flat surface to work on. Ask them to
+            copy the picture below to the best of
+            their abilities.{'\n'}
+            [PICTURE HERE]
         </Text>
 
-        {/* 3. Upload image */}
+        {/* Step 3. Upload image */}
+        <Text style={styles.h2}>
+          Step 3
+        </Text>
         <Text style={styles.body}>
-          - Take a picture of their drawing and upload it.
+          Upload a clear picture of your student's final drawing.
         </Text>
         <ImagePickerButton />
 
-        {/* 4. Submit */}
-
+        {/* Step 4. Submit */}
         
       </View>
     </View>
