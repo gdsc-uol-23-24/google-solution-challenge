@@ -21,8 +21,7 @@ const ImagePickerButton = () => {
 			// If permission is denied, show an alert 
 			Alert.alert( 
 				"Permission Denied", 
-				`Sorry, we need camera 
-				roll permission to upload images.` 
+				`Sorry, we need camera roll permission to upload images.` 
 			); 
 		} else { 
 		    // Launch the image library and get 
@@ -45,10 +44,10 @@ const ImagePickerButton = () => {
     return ( 
         <View>
 		{/* Button to choose an image */} 
-		<TouchableOpacity style={styles.button} 
+		<TouchableOpacity style={[styles.button]} 
 			onPress={pickImage}> 
 			<Text style={styles.buttonText}> 
-				Choose Image
+				Choose image
 			</Text> 
 		</TouchableOpacity> 
 
