@@ -5,6 +5,9 @@ import ImagePickerButton from '../components/ImagePicker';
 import { Picker } from '@react-native-picker/picker';
 
 const LiteracyAssessmentScreen = ({ navigation }) => {
+  const [image, setImage] = useState(null);
+  const [age, setAge] = useState('4-5');  // Hardcoded age for testing
+
   const navigateToHome = () => {
     navigation.replace('Home');
   };
@@ -88,8 +91,10 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
     </View>
   );
 
+
   return (
     <View style={styles.content}>
+
 
         {/* Go back to home */}
         <TouchableOpacity
@@ -104,6 +109,7 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
           renderItem={renderItem}
           keyExtractor={(item, index) => index.toString()}
         />
+
 
     </View>
   );
