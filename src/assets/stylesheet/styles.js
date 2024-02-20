@@ -58,12 +58,13 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontFamily: 'DMSans_700Bold',
     textAlign: 'left',
-    marginBottom: 5,
+    marginTop: 5,
+    marginBottom: 10,
   },
   body: {
     fontSize: 18,
     fontFamily: 'DMSans_400Regular',
-    marginBottom: 5,
+    marginBottom: 10,
   },
   // ***
   // Button styles
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignItems: 'center',
     marginVertical: 10,
-    marginTop: 10
+    marginTop: 10,
   },
   buttonText: {
     fontSize: 18,
@@ -96,6 +97,9 @@ const styles = StyleSheet.create({
     color: "red", 
     marginTop: 16, 
   },
+  stepContainer: {
+    padding: 10,
+  }
 });
   
 export default styles;
