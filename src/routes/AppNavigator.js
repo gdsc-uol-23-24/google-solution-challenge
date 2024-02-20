@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import SplashScreen from '../screens/SplashScreen';
 import HomeScreen from '../screens/HomeScreen';
 import LiteracyAssessmentScreen from '../screens/LiteracyAssessmentScreen';
+import ResultsScreen from '../screens/ResultsScreen'; // Import the ResultsScreen
 import AppHeader from '../components/AppHeader';
 
 const Stack = createStackNavigator();
@@ -15,7 +16,7 @@ const AppNavigator = () => {
         <Stack.Screen
           name='Splash'
           component={SplashScreen}
-          options={{headerShown: false}}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name='Home'
@@ -37,7 +38,17 @@ const AppNavigator = () => {
             headerTitle: () => <AppHeader title={route.name} />,
           })}
         />
-
+        {/* Add the ResultsScreen to the navigator */}
+        <Stack.Screen
+          name='Results'
+          component={ResultsScreen}
+          options={({ route }) => ({
+            headerStyle: {
+              backgroundColor: '#A4BBF4',
+            },
+            headerTitle: () => <AppHeader title="Results" />,
+          })}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
