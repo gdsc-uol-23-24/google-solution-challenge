@@ -181,9 +181,9 @@ class ShapeClassifier:
                 2: "Congratulations! House shape is detected. This student meets pre-writing expectations for squares for their age. \n • Squares are the building blocks for letters such as 'E', 'F', 'H', 'I/i', 'L/l', and 'T/t'. Excellent job in creating a strong base for your students' writing capabilities!"
             },
             "triangle": {
-                0: "triangle 0",
-                1: "triangle 1",
-                2: "triangle 2"
+                0: "No roof is detected. This student has not met the pre-writing triangle expectations for their age group. \n • Triangles are crucial for letters such as 'A', 'M', 'N', 'V/v', 'W/w', 'X/x', 'Y/y', and 'Z/z'. Concentrating on this shape with your student can greatly enhance their confidence and build the essential skills needed for writing proficiency.",
+                1: "Roof is detected. This student is close to meeting pre-writing expectations for triangles for their age. \n • Triangles are crucial for letters such as 'A', 'M', 'N', 'V/v', 'W/w', 'X/x', 'Y/y', and 'Z/z'. A bit more practice, and your student will be excellent. Continue the fantastic effort!",
+                2: "Marvelous! Roof is detected. This student meets pre-writing expectations for triangles for their age. \n • Triangles are crucial for letters such as 'A', 'M', 'N', 'V/v', 'W/w', 'X/x', 'Y/y', and 'Z/z'. Fantastic work in laying a solid groundwork for your students' writing abilities!"
             }
         }
 
