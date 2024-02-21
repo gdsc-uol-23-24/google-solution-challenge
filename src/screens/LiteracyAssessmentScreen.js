@@ -28,33 +28,34 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
       return;
     }
     
-    // Assign backend endpoint
-    const backendUrl = '/api/process_data';
+    navigation.navigate('Results');
+    // // Assign backend endpoint
+    // const backendUrl = '/api/process_data';
 
-    // Construct the data to send to backend
-    const dataToSend = {
-      age: selectedAge,
-      image: uploadedImage,
-    };
+    // // Construct the data to send to backend
+    // const dataToSend = {
+    //   age: selectedAge,
+    //   image: uploadedImage,
+    // };
 
-    // Make a POST request to the backend
-    fetch(backendUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(dataToSend),
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log('Backend response:', data);
-        // Navigate to Results screen to display data
-        navigation.navigate('Results', { responseData: data });
-      })
-      .catch(error => {
-        console.error('Error sending data to backend:', error);
-        Alert.alert('Error occurred while generating results');
-      });
+  //   // Make a POST request to the backend
+  //   fetch(backendUrl, {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify(dataToSend),
+  //   })
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       console.log('Backend response:', data);
+  //       // Navigate to Results screen to display data
+  //       navigation.navigate('Results', { responseData: data });
+  //     })
+  //     .catch(error => {
+  //       console.error('Error sending data to backend:', error);
+  //       Alert.alert('Error occurred while generating results');
+  //     });
   };
 
   // Assessment steps to display in FlatList
