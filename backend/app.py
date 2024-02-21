@@ -15,22 +15,20 @@ def process_data():
         image = data.get('image')
         age = data.get('age')
 
-        print(image)
+        ## Un-comment if you're using the web-based expo-verson:
+        # image = image["assets"][0]["uri"]
 
         # Initiate class:
         model = ShapeClassifier()
         result = model.main(shapes_path=image, age_group=age)
 
-        print(result)
-
         # Return the result as JSON
-        return jsonify(result)
+        return result
     
 
     except Exception as e:
-        print("not working")
-        print(str(e))
+        print(e)
         return jsonify({'error': str(e)})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port="0.0.0.0", debug=True)

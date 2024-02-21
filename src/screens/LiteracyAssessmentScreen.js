@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, FlatList, Alert } from 'react-native';
 import styles from '../assets/stylesheet/styles';
 import ImagePickerButton from '../components/ImagePicker';
 import { Picker } from '@react-native-picker/picker';
+import * as FileSystem from 'expo-file-system';
 
 const LiteracyAssessmentScreen = ({ navigation }) => {
   // Navigate back to home
@@ -15,9 +16,42 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
   const [uploadedImage, setUploadedImage] = useState(null);
 
   // Handle image selection from ImagePicker
-  const handleImageUpload = (imageData) => {
-    setUploadedImage(imageData);
-    console.log('Selected Image Data:', imageData);
+  const handleImageUpload = async (imageData) => {
+    try {
+      // Ensure that imageData is not null
+      if (!imageData) {
+        throw new Error('Invalid image data provided.');
+      }
+
+      // Extract URI from object
+      const uri = imageData.assets[0].uri;
+
+      // Convert selected image to base64
+      const base64Image = await imageToBase64(uri);
+
+      // Update state with the base64 image
+      setUploadedImage(base64Image);
+      console.log('Selected Image Data:', base64Image);
+
+    } catch (error) {
+      console.error('Error converting image to base64:', error);
+    }
+  };
+
+  // Function to convert image URI to base64
+  const imageToBase64 = async (uri) => {
+    try {
+      console.log("Image URI:", uri);
+      const base64 = await FileSystem.readAsStringAsync(uri, {
+        encoding: FileSystem.EncodingType.Base64,
+      });
+      console.log("Converted to Base64!");
+      return base64;
+
+    } catch (error) {
+      console.error('Error converting image to base64:', error);
+      throw error;
+    }
   };
 
   // Function to generate results
@@ -27,9 +61,9 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
       Alert.alert("Please select age and upload an image.");
       return;
     }
-    
+
     // Assign backend endpoint
-    const backendUrl = '/api/process_data';
+    const backendUrl = 'http://192.168.100.17:5000/api/process_data';
 
     // Construct the data to send to backend
     const dataToSend = {
@@ -73,14 +107,14 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
             onValueChange={(itemValue, itemIndex) => setSelectedAge(itemValue)}
           >
             {/* Age range options from 3-4 to 10-11 */}
-            <Picker.Item label="3–4" value="3to4" />
-            <Picker.Item label="4–5" value="4to5" />
-            <Picker.Item label="5–6" value="5to6" />
-            <Picker.Item label="6–7" value="6to7" />
-            <Picker.Item label="7–8" value="7to8" />
-            <Picker.Item label="8–9" value="8to9" />
-            <Picker.Item label="9–10" value="9to10" />
-            <Picker.Item label="10–11" value="10to11" />
+            <Picker.Item label="3–4" value="3-4" />
+            <Picker.Item label="4–5" value="4-5" />
+            <Picker.Item label="5–6" value="5-6" />
+            <Picker.Item label="6–7" value="6-7" />
+            <Picker.Item label="7–8" value="7-8" />
+            <Picker.Item label="8–9" value="8-9" />
+            <Picker.Item label="9–10" value="9-10" />
+            <Picker.Item label="10–11" value="10-11" />
           </Picker>
         </>
       ),
@@ -105,7 +139,7 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
           <Text style={styles.body}>
             Upload a clear picture of your student's final drawing.
           </Text>
-          <ImagePickerButton onImageSelected={handleImageUpload}/>
+          <ImagePickerButton onImageSelected={handleImageUpload} />
         </>
       ),
     },
@@ -113,7 +147,7 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
       title: 'Submit details',
       content: (
         <>
-          <Text style={[styles.h2, {marginTop: -30}]}>Step 4</Text>
+          <Text style={[styles.h2, { marginTop: -30 }]}>Step 4</Text>
           <Text style={styles.body}>
             You're ready to submit! Discover your student's
             potential for writing literacy.
@@ -138,9 +172,9 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
     <View style={styles.content}>
       {/* Go back to home */}
       <TouchableOpacity
-        style={[styles.button, {backgroundColor: 'darkgrey'}]}
+        style={[styles.button, { backgroundColor: 'darkgrey' }]}
         onPress={navigateToHome}>
-         <Text style={styles.buttonText}>← Not ready? Go back</Text>
+        <Text style={styles.buttonText}>← Not ready? Go back</Text>
       </TouchableOpacity>
       {/* Render assessment steps with FlatList */}
       <FlatList

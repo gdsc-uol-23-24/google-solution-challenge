@@ -1,9 +1,12 @@
 import cv2
+import base64
 import numpy as np
 import tensorflow as tf
+import io
 from io import BytesIO
 from PIL import Image
-from skimage import io, color
+from skimage import io as sio
+from skimage import color
 from skimage.util import img_as_ubyte
 from skimage.measure import find_contours
 
@@ -29,7 +32,8 @@ class ShapeClassifier:
             "6-7": self.CLASSES[:],
             "7-8": self.CLASSES[:],
             "8-9": self.CLASSES[:],
-            "9-10": self.CLASSES[:]
+            "9-10": self.CLASSES[:],
+            "10-11": self.CLASSES[:]
         }
 
         # Load pre-trained models
@@ -38,10 +42,33 @@ class ShapeClassifier:
         self.model_s = tf.keras.models.load_model('Models/square.h5')
         self.model_t = tf.keras.models.load_model('Models/triangle.h5')
 
-    def extraction(self, image_path, target_size=(28, 28)):
+    def base64_to_png(self, base64_string):
+        try:
+            
+            ## Un-comment if you're using the web-based expo-verson:
+            ## Split the base64 string
+            # _, image_data = base64_string.split(',')
 
+            # Decode the Base64 string to bytes
+            image_bytes = base64.b64decode(base64_string)
+
+            # Create a BytesIO object from the decoded bytes
+            image_buffer = io.BytesIO(image_bytes)
+
+            # Open the image using PIL
+            image = Image.open(image_buffer)
+
+            image.show()
+
+            return image
+        except Exception as e:
+            print(f"Error: {e}")
+            return None
+
+    def extraction(self, image_path, target_size=(28, 28)):
+        
         # loading the image
-        image = io.imread(image_path)
+        image = np.array(image_path)
 
         # check if the image has an alpha channel and remove it
         if image.shape[2] == 4:
@@ -136,7 +163,7 @@ class ShapeClassifier:
             return predicted_class_index
 
     def populate_json(self, age_group):
-        
+
         # Initializing the JSON output
         json_output = {
             "age_group": age_group,
@@ -147,19 +174,19 @@ class ShapeClassifier:
         # Feedback for each shape (I will add new ones, let it be like this for now)
         feedback_dicts = {
             "circle": {
-                0: "Circle 0",
-                1: "Circle 1",
-                2: "Circle 2"
+                0: "No sun shape is detected. This student has not met the pre-writing circle expectations for their age group. \n • Circles play a crucial role in forming letters such as 'O/o', 'P/p', 'Q/q' and 'C/c'. Focusing on this shape with your student can significantly boost their confidence and develop the foundational skills necessary for writing proficiency.",
+                1: "Sun shape is detected. This student is close to meeting pre-writing expectations for circles for their age. \n • Circles play a crucial role in forming letters such as 'O/o', 'P/p', 'Q/q' and 'C/c'. With a bit more practice, your student will be excellent. Keep up the good work!",
+                2: "Amazing! Sun shape is detected. This student meets pre-writing expectations for circles for their age. \n • Circles play a crucial role in forming letters such as 'O/o', 'P/p', 'Q/q' and 'C/c'. Great job on building such a strong foundation for your students' writing skills!"
             },
             "square": {
-                0: "square 0",
-                1: "square 1",
-                2: "square 2"
+                0: "No house is detected. This student has not met the pre-writing square expectations for their age group. \n • Squares are the building blocks for letters such as 'E', 'F', 'H', 'I/i', 'L/l', and 'T/t'. Working on this shape with your student can notably increase their confidence and establish the basic skills critical for their success in writing.",
+                1: "House shape is detected. This student is close to meeting pre-writing expectations for squares for their age. \n • Squares are the building blocks for letters such as 'E', 'F', 'H', 'I/i', 'L/l', and 'T/t'. With just a little more practice, your student will excel. Keep up the excellent work!",
+                2: "Congratulations! House shape is detected. This student meets pre-writing expectations for squares for their age. \n • Squares are the building blocks for letters such as 'E', 'F', 'H', 'I/i', 'L/l', and 'T/t'. Excellent job in creating a strong base for your students' writing capabilities!"
             },
             "triangle": {
-                0: "triangle 0",
-                1: "triangle 1",
-                2: "triangle 2"
+                0: "No roof is detected. This student has not met the pre-writing triangle expectations for their age group. \n • Triangles are crucial for letters such as 'A', 'M', 'N', 'V/v', 'W/w', 'X/x', 'Y/y', and 'Z/z'. Concentrating on this shape with your student can greatly enhance their confidence and build the essential skills needed for writing proficiency.",
+                1: "Roof is detected. This student is close to meeting pre-writing expectations for triangles for their age. \n • Triangles are crucial for letters such as 'A', 'M', 'N', 'V/v', 'W/w', 'X/x', 'Y/y', and 'Z/z'. A bit more practice, and your student will be excellent. Continue the fantastic effort!",
+                2: "Marvelous! Roof is detected. This student meets pre-writing expectations for triangles for their age. \n • Triangles are crucial for letters such as 'A', 'M', 'N', 'V/v', 'W/w', 'X/x', 'Y/y', and 'Z/z'. Fantastic work in laying a solid groundwork for your students' writing abilities!"
             }
         }
 
@@ -181,7 +208,6 @@ class ShapeClassifier:
             else:
                 json_output["additional_info"].append(entry)
 
-
         # Add shapes that are not detected:
         for shape in self.CLASSES:
             if shape not in self.detected:
@@ -201,10 +227,13 @@ class ShapeClassifier:
         # Return the JSON output
         return json_output
 
-    def main(self, shapes_path="path/to/your/shapes", age_group="3-4", confidence_threshold=0.6):
+    def main(self, shapes_path="path/to/your/shapes", age_group="3-4", confidence_threshold=0.4):
+
+        # Step 0: Convert Base-64 to PNG:
+        png = self.base64_to_png(shapes_path)
 
         # Step 1: Extract shapes from drawing:
-        self.extraction(shapes_path)
+        self.extraction(png)
 
         # Process each shape:
         for i, image in enumerate(self.shapes):
@@ -224,13 +253,18 @@ class ShapeClassifier:
                 continue  # Skip further processing for this image
 
             # Step 3: Make a grading prediction for the current shape:
-            if self.CLASSES[predicted_class_index] not in self.detected:
-                # Grade the drawing based on the predicted class
-                graded_index = self.grade(predicted_class_index, preprocessed)
+            
+            # Grade the drawing based on the predicted class
+            graded_index = self.grade(predicted_class_index, preprocessed)
 
-                # Add to the list of detected shapes:
-                # Add shapes name as key, and the value as its rating:
+            # Add to the list of detected shapes:
+            # Add shapes name as key, and the value as its rating:
+            if self.CLASSES[predicted_class_index] in self.detected:
+                self.detected[self.CLASSES[predicted_class_index]] = max(graded_index, self.detected[self.CLASSES[predicted_class_index]])
+
+            else:
                 self.detected[self.CLASSES[predicted_class_index]] = graded_index
+
 
         # Return JSON:
         return self.populate_json(age_group)
