@@ -61,9 +61,9 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
       Alert.alert("Please select age and upload an image.");
       return;
     }
-    
+
     // Assign backend endpoint
-    const backendUrl = '/api/process_data';
+    const backendUrl = 'http://127.0.0.1:5000/api/process_data';
 
     // Construct the data to send to backend
     const dataToSend = {
@@ -107,14 +107,14 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
             onValueChange={(itemValue, itemIndex) => setSelectedAge(itemValue)}
           >
             {/* Age range options from 3-4 to 10-11 */}
-            <Picker.Item label="3–4" value="3to4" />
-            <Picker.Item label="4–5" value="4to5" />
-            <Picker.Item label="5–6" value="5to6" />
-            <Picker.Item label="6–7" value="6to7" />
-            <Picker.Item label="7–8" value="7to8" />
-            <Picker.Item label="8–9" value="8to9" />
-            <Picker.Item label="9–10" value="9to10" />
-            <Picker.Item label="10–11" value="10to11" />
+            <Picker.Item label="3–4" value="3-4" />
+            <Picker.Item label="4–5" value="4-5" />
+            <Picker.Item label="5–6" value="5-6" />
+            <Picker.Item label="6–7" value="6-7" />
+            <Picker.Item label="7–8" value="7-8" />
+            <Picker.Item label="8–9" value="8-9" />
+            <Picker.Item label="9–10" value="9-10" />
+            <Picker.Item label="10–11" value="10-11" />
           </Picker>
         </>
       ),
@@ -139,7 +139,7 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
           <Text style={styles.body}>
             Upload a clear picture of your student's final drawing.
           </Text>
-          <ImagePickerButton onImageSelected={handleImageUpload}/>
+          <ImagePickerButton onImageSelected={handleImageUpload} />
         </>
       ),
     },
@@ -147,7 +147,7 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
       title: 'Submit details',
       content: (
         <>
-          <Text style={[styles.h2, {marginTop: -30}]}>Step 4</Text>
+          <Text style={[styles.h2, { marginTop: -30 }]}>Step 4</Text>
           <Text style={styles.body}>
             You're ready to submit! Discover your student's
             potential for writing literacy.
@@ -172,9 +172,9 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
     <View style={styles.content}>
       {/* Go back to home */}
       <TouchableOpacity
-        style={[styles.button, {backgroundColor: 'darkgrey'}]}
+        style={[styles.button, { backgroundColor: 'darkgrey' }]}
         onPress={navigateToHome}>
-         <Text style={styles.buttonText}>← Not ready? Go back</Text>
+        <Text style={styles.buttonText}>← Not ready? Go back</Text>
       </TouchableOpacity>
       {/* Render assessment steps with FlatList */}
       <FlatList
