@@ -5,7 +5,6 @@ import tensorflow as tf
 import io
 from io import BytesIO
 from PIL import Image
-from skimage import io as sio
 from skimage import color
 from skimage.util import img_as_ubyte
 from skimage.measure import find_contours
@@ -172,14 +171,14 @@ class ShapeClassifier:
         # Feedback for each shape (I will add new ones, let it be like this for now)
         feedback_dicts = {
             "circle": {
-                0: "Circle 0",
-                1: "Circle 1",
-                2: "Circle 2"
+                0: "No sun shape is detected. This student has not met the pre-writing circle expectations for their age group. \n • Circles play a crucial role in forming letters such as 'O/o', 'P/p', 'Q/q' and 'C/c'. Focusing on this shape with your student can significantly boost their confidence and develop the foundational skills necessary for writing proficiency.",
+                1: "Sun shape is detected. This student is close to meeting pre-writing expectations for circles for their age. \n • Circles play a crucial role in forming letters such as 'O/o', 'P/p', 'Q/q' and 'C/c'. With a bit more practice, your student will be excellent. Keep up the good work!",
+                2: "Amazing! Sun shape is detected. This student meets pre-writing expectations for circles for their age. \n • Circles play a crucial role in forming letters such as 'O/o', 'P/p', 'Q/q' and 'C/c'. Great job on building such a strong foundation for your students' writing skills!"
             },
             "square": {
-                0: "square 0",
-                1: "square 1",
-                2: "square 2"
+                0: "No house is detected. This student has not met the pre-writing square expectations for their age group. \n • Squares are the building blocks for letters such as 'E', 'F', 'H', 'I/i', 'L/l', and 'T/t'. Working on this shape with your student can notably increase their confidence and establish the basic skills critical for their success in writing.",
+                1: "House shape is detected. This student is close to meeting pre-writing expectations for squares for their age. \n • Squares are the building blocks for letters such as 'E', 'F', 'H', 'I/i', 'L/l', and 'T/t'. With just a little more practice, your student will excel. Keep up the excellent work!",
+                2: "Congratulations! House shape is detected. This student meets pre-writing expectations for squares for their age. \n • Squares are the building blocks for letters such as 'E', 'F', 'H', 'I/i', 'L/l', and 'T/t'. Excellent job in creating a strong base for your students' writing capabilities!"
             },
             "triangle": {
                 0: "triangle 0",
