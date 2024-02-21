@@ -5,6 +5,7 @@ import tensorflow as tf
 import io
 from io import BytesIO
 from PIL import Image
+from skimage import io as sio
 from skimage import color
 from skimage.util import img_as_ubyte
 from skimage.measure import find_contours
@@ -31,7 +32,8 @@ class ShapeClassifier:
             "6-7": self.CLASSES[:],
             "7-8": self.CLASSES[:],
             "8-9": self.CLASSES[:],
-            "9-10": self.CLASSES[:]
+            "9-10": self.CLASSES[:],
+            "10-11": self.CLASSES[:]
         }
 
         # Load pre-trained models
@@ -43,11 +45,12 @@ class ShapeClassifier:
     def base64_to_png(self, base64_string):
         try:
             
-            # Split the base64 string
-            _, image_data = base64_string.split(',')
+            ## Un-comment if you're using the web-based expo-verson:
+            ## Split the base64 string
+            # _, image_data = base64_string.split(',')
 
             # Decode the Base64 string to bytes
-            image_bytes = base64.b64decode(image_data)
+            image_bytes = base64.b64decode(base64_string)
 
             # Create a BytesIO object from the decoded bytes
             image_buffer = io.BytesIO(image_bytes)
@@ -63,7 +66,7 @@ class ShapeClassifier:
             return None
 
     def extraction(self, image_path, target_size=(28, 28)):
-
+        
         # loading the image
         image = np.array(image_path)
 
@@ -222,10 +225,9 @@ class ShapeClassifier:
                     json_output["additional_info"].append(entry)
 
         # Return the JSON output
-        print(json_output)
         return json_output
 
-    def main(self, shapes_path="path/to/your/shapes", age_group="3-4", confidence_threshold=0.6):
+    def main(self, shapes_path="path/to/your/shapes", age_group="3-4", confidence_threshold=0.4):
 
         # Step 0: Convert Base-64 to PNG:
         png = self.base64_to_png(shapes_path)
@@ -251,13 +253,18 @@ class ShapeClassifier:
                 continue  # Skip further processing for this image
 
             # Step 3: Make a grading prediction for the current shape:
-            if self.CLASSES[predicted_class_index] not in self.detected:
-                # Grade the drawing based on the predicted class
-                graded_index = self.grade(predicted_class_index, preprocessed)
+            
+            # Grade the drawing based on the predicted class
+            graded_index = self.grade(predicted_class_index, preprocessed)
 
-                # Add to the list of detected shapes:
-                # Add shapes name as key, and the value as its rating:
+            # Add to the list of detected shapes:
+            # Add shapes name as key, and the value as its rating:
+            if self.CLASSES[predicted_class_index] in self.detected:
+                self.detected[self.CLASSES[predicted_class_index]] = max(graded_index, self.detected[self.CLASSES[predicted_class_index]])
+
+            else:
                 self.detected[self.CLASSES[predicted_class_index]] = graded_index
+
 
         # Return JSON:
         return self.populate_json(age_group)

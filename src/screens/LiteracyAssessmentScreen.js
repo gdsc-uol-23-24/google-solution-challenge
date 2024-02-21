@@ -22,22 +22,22 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
       if (!imageData) {
         throw new Error('Invalid image data provided.');
       }
-  
+
       // Extract URI from object
       const uri = imageData.assets[0].uri;
-  
+
       // Convert selected image to base64
       const base64Image = await imageToBase64(uri);
-  
+
       // Update state with the base64 image
       setUploadedImage(base64Image);
       console.log('Selected Image Data:', base64Image);
-      
+
     } catch (error) {
       console.error('Error converting image to base64:', error);
     }
   };
-      
+
   // Function to convert image URI to base64
   const imageToBase64 = async (uri) => {
     try {
@@ -63,7 +63,7 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
     }
 
     // Assign backend endpoint
-    const backendUrl = 'http://127.0.0.1:5000/api/process_data';
+    const backendUrl = 'http://192.168.100.17:5000/api/process_data';
 
     // Construct the data to send to backend
     const dataToSend = {
