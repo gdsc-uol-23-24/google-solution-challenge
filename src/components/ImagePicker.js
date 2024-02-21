@@ -3,7 +3,7 @@ import { View, Text, Image, TouchableOpacity, Alert } from "react-native";
 import * as ImagePicker from "expo-image-picker"; 
 import styles from '../assets/stylesheet/styles';
 
-const ImagePickerButton = () => {
+const ImagePickerButton = ({ onImageSelected }) => {
     // Stores the selected image URI 
 	const [file, setFile] = useState(null); 
 
@@ -13,6 +13,7 @@ const ImagePickerButton = () => {
 	// Function to pick an image from 
 	//the device's media library 
 	const pickImage = async () => { 
+		console.log('Attempting to pick an image');
 		const { status } = await ImagePicker. 
 			requestMediaLibraryPermissionsAsync(); 
 
@@ -29,7 +30,7 @@ const ImagePickerButton = () => {
 			const result = 
 				await ImagePicker.launchImageLibraryAsync(); 
 
-			if (!result.cancelled) { 
+			if (!result.canceled) { 
 
 				// If an image is selected (not cancelled), 
 				// update the file state variable 
@@ -37,6 +38,7 @@ const ImagePickerButton = () => {
 
 				// Clear any previous errors 
 				setError(null); 
+				onImageSelected(result);
 			} 
 		}
 	}; 

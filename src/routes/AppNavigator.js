@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import SplashScreen from '../screens/SplashScreen';
 import HomeScreen from '../screens/HomeScreen';
 import LiteracyAssessmentScreen from '../screens/LiteracyAssessmentScreen';
+import Results from '../screens/Results';
 import AppHeader from '../components/AppHeader';
 
 const Stack = createStackNavigator();
@@ -30,6 +31,16 @@ const AppNavigator = () => {
         <Stack.Screen
           name='Literacy Assessment'
           component={LiteracyAssessmentScreen}
+          options={({ route }) => ({
+            headerStyle: {
+              backgroundColor: '#A4BBF4',
+            },
+            headerTitle: () => <AppHeader title={route.name} />,
+          })}
+        />
+        <Stack.Screen
+          name='Results'
+          component={Results}
           options={({ route }) => ({
             headerStyle: {
               backgroundColor: '#A4BBF4',
