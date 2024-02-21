@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, FlatList, Alert } from 'react-native';
 import styles from '../assets/stylesheet/styles';
 import ImagePickerButton from '../components/ImagePicker';
 import { Picker } from '@react-native-picker/picker';
+import * as FileSystem from 'expo-file-system';
 
 const LiteracyAssessmentScreen = ({ navigation }) => {
   // Navigate back to home
@@ -15,9 +16,42 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
   const [uploadedImage, setUploadedImage] = useState(null);
 
   // Handle image selection from ImagePicker
-  const handleImageUpload = (imageData) => {
-    setUploadedImage(imageData);
-    console.log('Selected Image Data:', imageData);
+  const handleImageUpload = async (imageData) => {
+    try {
+      // Ensure that imageData is not null
+      if (!imageData) {
+        throw new Error('Invalid image data provided.');
+      }
+  
+      // Extract URI from object
+      const uri = imageData.assets[0].uri;
+  
+      // Convert selected image to base64
+      const base64Image = await imageToBase64(uri);
+  
+      // Update state with the base64 image
+      setUploadedImage(base64Image);
+      console.log('Selected Image Data:', base64Image);
+      
+    } catch (error) {
+      console.error('Error converting image to base64:', error);
+    }
+  };
+      
+  // Function to convert image URI to base64
+  const imageToBase64 = async (uri) => {
+    try {
+      console.log("Image URI:", uri);
+      const base64 = await FileSystem.readAsStringAsync(uri, {
+        encoding: FileSystem.EncodingType.Base64,
+      });
+      console.log("Converted to Base64!");
+      return base64;
+
+    } catch (error) {
+      console.error('Error converting image to base64:', error);
+      throw error;
+    }
   };
 
   // Function to generate results
