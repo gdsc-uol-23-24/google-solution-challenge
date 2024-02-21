@@ -1,9 +1,12 @@
 import cv2
+import base64
 import numpy as np
 import tensorflow as tf
+import io
 from io import BytesIO
 from PIL import Image
-from skimage import io, color
+from skimage import io as sio
+from skimage import color
 from skimage.util import img_as_ubyte
 from skimage.measure import find_contours
 
@@ -38,10 +41,32 @@ class ShapeClassifier:
         self.model_s = tf.keras.models.load_model('Models/square.h5')
         self.model_t = tf.keras.models.load_model('Models/triangle.h5')
 
+    def base64_to_png(self, base64_string):
+        try:
+            
+            # Split the base64 string
+            _, image_data = base64_string.split(',')
+
+            # Decode the Base64 string to bytes
+            image_bytes = base64.b64decode(image_data)
+
+            # Create a BytesIO object from the decoded bytes
+            image_buffer = io.BytesIO(image_bytes)
+
+            # Open the image using PIL
+            image = Image.open(image_buffer)
+
+            image.show()
+
+            return image
+        except Exception as e:
+            print(f"Error: {e}")
+            return None
+
     def extraction(self, image_path, target_size=(28, 28)):
 
         # loading the image
-        image = io.imread(image_path)
+        image = np.array(image_path)
 
         # check if the image has an alpha channel and remove it
         if image.shape[2] == 4:
@@ -136,7 +161,7 @@ class ShapeClassifier:
             return predicted_class_index
 
     def populate_json(self, age_group):
-        
+
         # Initializing the JSON output
         json_output = {
             "age_group": age_group,
@@ -181,7 +206,6 @@ class ShapeClassifier:
             else:
                 json_output["additional_info"].append(entry)
 
-
         # Add shapes that are not detected:
         for shape in self.CLASSES:
             if shape not in self.detected:
@@ -199,12 +223,16 @@ class ShapeClassifier:
                     json_output["additional_info"].append(entry)
 
         # Return the JSON output
+        print(json_output)
         return json_output
 
     def main(self, shapes_path="path/to/your/shapes", age_group="3-4", confidence_threshold=0.6):
 
+        # Step 0: Convert Base-64 to PNG:
+        png = self.base64_to_png(shapes_path)
+
         # Step 1: Extract shapes from drawing:
-        self.extraction(shapes_path)
+        self.extraction(png)
 
         # Process each shape:
         for i, image in enumerate(self.shapes):
