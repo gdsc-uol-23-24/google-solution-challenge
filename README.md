@@ -1,29 +1,35 @@
+<div style="text-align: center;">
+  <img src="src/assets/images/literadraw-logo-small.png" alt="LiteraDraw Logo" width="150" />
+</div>
+
 # LiteraDraw
+A mobile app that provides feedback on hand-drawn shapes, aiding in the development of pre-writing skills for children.
 
 
-This is some basic starter React Native code to set the stage for the front-end team for the Google Solution Challenge project, *Improving Literacy Through Art* (or ILTA — name is still pending).
 
 
-The idea is to develop an Android-first application that can process pictures of children's drawings on paper, identify key pre-writing shapes present in the drawing, and return an estimate of the child's potential for writing literacy based on the motor skills demonstrated therein, in accordance with the [Battelle guide](https://ieeexplore.ieee.org/document/9440430).
+## Description
+LiteraDraw is a mobile application designed to assess and provide feedback on hand-drawn shapes created by users, particularly targeting children in the age group of 3-11. The application utilizes image processing and machine learning techniques to classify and grade drawn shapes, offering insights into a child's pre-writing skills development, in accordance with the [Battelle guide](https://ieeexplore.ieee.org/document/9440430).
 
 
-# Project structure
+## Project structure
+We've created a Full Stack Mobile Application, where our components are divided amoung two folders:
+- **Front-end Components:**  
+    The `src` folder is the main container of all the code inside the application. It contains:
+    - An `assets` folder (for static images or fonts)
+    - A `components` folder (for reusable UI elements)
+    - A `routes` folder (for navigation-related code)
+    - A `screens` folder (each file in this contains its route).
+
+    The `App.js` file in the root directory is the entry point and main component of the application.
+
+- **Back-end Components:**
+    - `app.py`: An API script facilitating communication between the front-end and back-end.
+    - `algorithm.py`: Manages data from the back-end, extracting, classifying, and assessing drawings sent from the front-end.
+    - `Models` Folder: Contains pre-trained models for drawing classification and assessment.
 
 
-The `src` folder is the main container of all the code inside the application. It contains:
-- An `assets` folder (for static images or fonts)
-- A `components` folder (for reusable UI elements)
-- A `routes` folder (for navigation-related code)
-- A `screens` folder (each file in this contains its route).
-
-
-The `App.js` file in the root directory is the entry point and main component of the application.
-
-
-The `precision.py` file is retained from a previous commit, but disconnected from the React Native app.
-
-
-# Prerequisites
+## Prerequisites
 
 
 On your **PC**, you will need to have installed:
@@ -37,7 +43,7 @@ On your **smartphone**, you will need to have installed:
 - [Expo Go](https://expo.dev/client) (available on the App Store and Google Play). You can use this app to scan the QR code that is generated once you start the project server, making it easy to view the project on your own mobile device.
 
 
-# Installation
+## Installation
 
 
 Once you have cloned the repository, open your terminal and navigate into the project directory.
@@ -48,7 +54,7 @@ Once you have cloned the repository, open your terminal and navigate into the pr
 
 ## Backend
 Navigate to the backend directory.  
-> `cd google-solution-challenge/backend`
+> `cd backend`
 
 
 Set up a virtual environment.
@@ -107,17 +113,21 @@ To **start the development server**, simply run:
 As the server starts, a QR code will be displayed in your terminal. Scan this on your smartphone using Expo Go. Expo Go will download a Javascript bundle along with any assets needed and render the React Native app straight to your screen.
 
 
-# Usage
+## Usage
+(We'll add screenshots)
 
 
 
-
-# Contributors
-
-
-[Francis](github.com/francisblessedkim)
-[Hamza](github.com/SelfTaught-HamzaCodes)
-[Injila](github.com/injl)
+## Contributors
+[Francis](github.com/francisblessedkim)  
+[Hamza](github.com/SelfTaught-HamzaCodes)  
+[Injila](github.com/injl)  
 [Jana](github.com/JanaDragovic)
 
-# Credits
+## Credits
+(Credits)
+
+<br>
+Thank you,          
+
+**Team LiteraDraw**
