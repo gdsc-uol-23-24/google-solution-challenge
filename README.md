@@ -1,10 +1,8 @@
+# LiteraDraw
 <div style="text-align: center;">
   <img src="src/assets/images/literadraw-logo-small.png" alt="LiteraDraw Logo" width="150" />
 </div>
-
-# LiteraDraw
 A mobile app that provides feedback on hand-drawn shapes, aiding in the development of pre-writing skills for children.
-
 
 
 
