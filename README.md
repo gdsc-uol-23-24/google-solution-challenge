@@ -1,10 +1,9 @@
 # LiteraDraw
+A mobile app that provides feedback on hand-drawn shapes, aiding in the development of pre-writing skills for children.
+
 <p align="center">
   <img src="src/assets/images/literadraw-logo-small.png" alt="LiteraDraw Logo" width="150" />
 </p>
-A mobile app that provides feedback on hand-drawn shapes, aiding in the development of pre-writing skills for children.
-
-
 
 ## Description
 LiteraDraw is a mobile application designed to assess and provide feedback on hand-drawn shapes created by users, particularly targeting children in the age group of 3-11. The application utilizes image processing and machine learning techniques to classify and grade drawn shapes, offering insights into a child's pre-writing skills development, in accordance with the [Battelle guide](https://ieeexplore.ieee.org/document/9440430).
