@@ -1,5 +1,5 @@
 # LiteraDraw
-A mobile app that provides feedback on hand-drawn shapes, aiding in the development of pre-writing skills for children.
+A mobile app that helps children improve pre-writing skills by giving feedback on their hand-drawn shapes.
 
 <p align="center">
   <img src="src/assets/images/literadraw-logo-small.png" alt="LiteraDraw Logo" width="150" />
