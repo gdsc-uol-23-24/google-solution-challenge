@@ -59,7 +59,7 @@ Set up a virtual environment.
 > `python -m venv [name of your virtual environment]`    
 
 Install the required dependencies.
-> `pip install -r ./requirements`
+> `pip install -r ./requirements.txt`
 
 Initiate the Flask server.
 > `flask run --host=0.0.0.0`
