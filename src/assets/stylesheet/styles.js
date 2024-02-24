@@ -11,8 +11,8 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   splashLogo: {
-    width: 250, 
-    height: 250, 
+    width: 250,
+    height: 250,
     resizeMode: 'contain',
     marginBottom: -5,
   },
@@ -85,21 +85,60 @@ const styles = StyleSheet.create({
   },
   // ***
   // Image styles
-  imageContainer: { 
+  imageContainer: {
     marginTop: 20,
-  }, 
-  image: { 
-    width: 200, 
-    height: 200, 
+  },
+  image: {
+    width: 200,
+    height: 200,
     resizeMode: 'cover',
-  }, 
-  errorText: { 
-    color: "red", 
-    marginTop: 16, 
+  },
+  errorText: {
+    color: "red",
+    marginTop: 16,
   },
   stepContainer: {
     padding: 10,
   }
+  ,
+  resultsContainer: {
+    padding: 20,
+    backgroundColor: '#fff', // Assuming a light theme
+  },
+  resultsTitle: {
+    fontSize: 24,
+    fontWeight: '600',
+    color: '#333',
+    marginBottom: 20,
+  },
+  resultItem: {
+    padding: 15,
+    marginBottom: 20,
+    backgroundColor: '#f9f9f9', // Light background for each item
+    borderRadius: 10, // Rounded corners for a modern look
+    shadowColor: "#000", // Simple shadow for depth (optional)
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  shapeName: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 5, // Space between the shape name and its rating/feedback
+  },
+  rating: {
+    fontSize: 18,
+    color: '#666',
+    marginBottom: 5,
+  },
+  feedback: {
+    fontSize: 16,
+    color: '#444',
+  },
 });
-  
+
 export default styles;

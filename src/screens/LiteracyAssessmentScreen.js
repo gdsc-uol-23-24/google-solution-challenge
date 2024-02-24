@@ -5,6 +5,9 @@ import ImagePickerButton from '../components/ImagePicker';
 import { Picker } from '@react-native-picker/picker';
 import * as FileSystem from 'expo-file-system';
 
+// Assign backend endpoint
+const backendUrl = 'http://192.168.100.17:5000/api/process_data';
+
 const LiteracyAssessmentScreen = ({ navigation }) => {
   // Navigate back to home
   const navigateToHome = () => {
@@ -31,7 +34,7 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
 
       // Update state with the base64 image
       setUploadedImage(base64Image);
-      console.log('Selected Image Data:', base64Image);
+      // console.log('Selected Image Data:', base64Image);
 
     } catch (error) {
       console.error('Error converting image to base64:', error);
@@ -61,9 +64,6 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
       Alert.alert("Please select age and upload an image.");
       return;
     }
-
-    // Assign backend endpoint
-    const backendUrl = 'http://192.168.100.17:5000/api/process_data';
 
     // Construct the data to send to backend
     const dataToSend = {
