@@ -21,14 +21,16 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
   };
 
   // Function to generate results
-  const generateResults = () => {
-    // Check that both age and image fields are populated
-    if (!selectedAge || !uploadedImage) {
-      Alert.alert("Please select age and upload an image.");
-      return;
-    }
+  // const generateResults = () => {
+  //   // Check that both age and image fields are populated
+  //   if (!selectedAge || !uploadedImage) {
+  //     Alert.alert("Please select age and upload an image.");
+  //     return;
+  //   }
     
-    navigation.navigate('Results');
+  //   navigation.navigate('Results');
+
+
     // // Assign backend endpoint
     // const backendUrl = '/api/process_data';
 
@@ -56,7 +58,36 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
   //       console.error('Error sending data to backend:', error);
   //       Alert.alert('Error occurred while generating results');
   //     });
+  //};
+
+  // generate results from backend 
+  const generateResults = async () => {
+    if (!selectedAge || !uploadedImage) {
+      Alert.alert("Please select age and upload an image.");
+      return;
+    }
+  
+    const backendUrl = 'backend-url'; // replace this with the actual backend url hamza
+    const formData = new FormData();
+    formData.append('age', selectedAge);
+    formData.append('image', { uri: uploadedImage, type: 'image/jpeg', name: 'drawing.jpg' });
+  
+    try {
+      const response = await fetch(backendUrl, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          // 'Content-Type': 'multipart/form-data', // no need to set this header hamza
+        },
+      });
+      const data = await response.json();
+      navigation.navigate('Results', { responseData: data });
+    } catch (error) {
+      console.error('Error sending data to backend:', error);
+      Alert.alert('Error occurred while generating results');
+    }
   };
+  // code ends here
 
   // Assessment steps to display in FlatList
   const steps = [
