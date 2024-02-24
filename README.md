@@ -82,7 +82,7 @@ Install the required packages for the frontend by running:
 
 This may take a little bit of time, but will eventually generate a folder called `node_modules` in your frontend folder, based on the dependencies specified in the `package-lock.json` file.
 
-Next, in your IDE, open ./src/screens/LiteracyAssessment.js, and **initialize the `backendUrl` variable** in line [x] to the **same IPv4 address** returned by your Flask server. It will look something like this:
+Next, in your IDE, open ./src/screens/LiteracyAssessment.js, and **initialize the `backendUrl` variable** in **line 9** to the same IPv4 address returned by your Flask server. It will look something like this:
 > `const backendUrl = http://185.107.80.231:5000`
 
 Now that you’re set up, you can use the Expo CLI to launch the app by leveraging `npx`, a Node.js package runner. View the list of available commands by running:
