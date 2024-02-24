@@ -11,7 +11,7 @@ Empowering children who enter primary school at an academic disadvantage to meet
 
 LiteraDraw is an Android-first mobile application, built to assess and provide feedback to users on the presence of pre-writing shapes in simple pencil drawings made by children belonging to the 3–11 age group.
 
-The application utilizes image processing and machine learning techniques to classify, extract, and rate these drawn shapes in accordance with the [Battelle guide](https://ieeexplore.ieee.org/document/9440430), offering insights to adult users on the development status of the child's pre-literacy skills. Included within these insights are further recommendations for the child based on their perceived strengths and weaknesses, which serve as a crucial starting point to bridge the gap between their current and expected literacy level.
+The application utilizes image processing and machine learning techniques to classify, extract, and rate these drawn shapes in accordance with the **Battelle guide**, offering insights to adult users on the development status of the child's pre-literacy skills. Included within these insights are further recommendations for the child based on their perceived strengths and weaknesses, which serve as a crucial starting point to bridge the gap between their current and expected literacy level.
 
 
 ## Project structure
@@ -101,15 +101,15 @@ As the server starts, a **QR code** will be displayed in your terminal. Scan thi
 
 ## Contributors
 
-[Francis](github.com/francisblessedkim)  
-[Hamza](github.com/SelfTaught-HamzaCodes)  
-[Injila](github.com/injl)  
-[Jana](github.com/JanaDragovic)
+[Francis](https://github.com/francisblessedkim)  
+[Hamza](https://github.com/SelfTaught-HamzaCodes)  
+[Injila](https://github.com/injl)  
+[Jana](https://github.com/JanaDragovic)
 
 
 ## Credits
-
-(Credits)
+- Battelle guide from [ Design, Implementation and Evaluation of a Support System for Educators and Therapists to Rate the Acquisition of Pre-Writing Skills](https://ieeexplore.ieee.org/document/9440430).
+- [Kid Sense: Writing Readiness (Pre-Writing) Skills](https://childdevelopment.com.au/areas-of-concern/writing/writing-readiness-pre-writing-skills/).
 
 <br>
 Thank you,          
