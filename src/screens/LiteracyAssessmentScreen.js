@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, FlatList, Alert } from 'react-native';
+import { View, Text, Image, TouchableOpacity, FlatList, Alert } from 'react-native';
 import styles from '../assets/stylesheet/styles';
 import ImagePickerButton from '../components/ImagePicker';
 import { Picker } from '@react-native-picker/picker';
@@ -123,11 +123,23 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
       title: 'Display image to copy',
       content: (
         <>
+          {/* Instructions */}
           <Text style={styles.h2}>Step 2</Text>
           <Text style={styles.body}>
             Provide your student with a pencil, a blank white sheet of paper, and a flat surface to work on.
-            Ask them to copy the picture below to the best of their abilities.
+            Ask them to copy the picture of the house below to the best of their abilities.
           </Text>
+          {/* Image to copy */}
+          <Image
+          source={require('../assets/images/house.png')}
+          style={styles.houseImage}
+          />
+          {/* Image caption */}
+          <Text style={styles.info}>
+            A scene of a house with a triangular roof,
+            a square exterior, and a circular sun in the background.
+          </Text>
+
         </>
       ),
     },
@@ -137,7 +149,11 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
         <>
           <Text style={styles.h2}>Step 3</Text>
           <Text style={styles.body}>
-            Upload a clear picture of your student's final drawing.
+            Upload a clear photo or scan of your student's final drawing.
+          </Text>
+          <Text style={styles.info}>
+            For best results, your photo should be taken with your camera parallel
+            to the drawing to avoid distortion or shadows.
           </Text>
           <ImagePickerButton onImageSelected={handleImageUpload} />
         </>
@@ -150,7 +166,7 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
           <Text style={[styles.h2, { marginTop: -30 }]}>Step 4</Text>
           <Text style={styles.body}>
             You're ready to submit! Discover your student's
-            potential for writing literacy.
+            potential for writing literacy in accordance with their age group.
           </Text>
           <TouchableOpacity
             style={[styles.button]}

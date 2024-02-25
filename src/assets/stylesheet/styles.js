@@ -66,6 +66,13 @@ const styles = StyleSheet.create({
     fontFamily: 'DMSans_400Regular',
     marginBottom: 10,
   },
+  info: {
+    fontSize: 14,
+    fontFamily: 'DMSans_400Regular',
+    marginBottom: 10,
+    color: 'gray',
+    textAlign: 'center'
+  },
   // ***
   // Button styles
   button: {
@@ -92,6 +99,12 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
     resizeMode: 'cover',
+  },
+  houseImage: {
+    width: 290,
+    height: 221,
+    resizeMode: 'contain',
+    alignSelf: 'center'
   },
   errorText: {
     color: "red",
