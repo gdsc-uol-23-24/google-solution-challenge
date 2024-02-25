@@ -3,7 +3,7 @@
 Empowering children who enter primary school at an academic disadvantage to meet key literacy benchmarks, **one drawing at a time.**
 
 <p align="center">
-  <img src="src/assets/images/literadraw-logo-large.png" alt="LiteraDraw Logo" width="25%" />
+  <img src="frontend/src/assets/images/literadraw-logo-large.png" alt="LiteraDraw Logo" width="25%" />
 </p>
 
 
@@ -32,8 +32,8 @@ This is a full-stack mobile application, with components divided among two folde
     - `algorithm.py`: Manages data from the backend, extracting, classifying, and assessing drawings sent from the frontend.
     - `Models` folder: Contains pre-trained models for drawing classification and assessment.
 
-- **Additional Components**
-    - The code for training our model is located on a separate branch. You can access and review it by visiting the following link: [Our Models](https://github.com/gdsc-uol-23-24/google-solution-challenge/tree/feature/how-we-train-our-model/model_training).
+
+- The code for training our model is located on a separate branch. You can access and review it by visiting the following link: [Our Models](https://github.com/gdsc-uol-23-24/google-solution-challenge/tree/feature/how-we-train-our-model/model_training).
 
 ## Prerequisites
 
@@ -58,7 +58,7 @@ Navigate to the backend directory.
 > `cd backend`
 
 Set up a virtual environment.
-> `python -m venv [name of your virtual environment]`    
+> `python -m venv [name-of-your-virtual-environment]`    
 
 Install the required dependencies.
 > `pip install -r ./requirements.txt`
@@ -98,16 +98,19 @@ As the server starts, a **QR code** will be displayed in your terminal. Scan thi
 
 
 ## Usage
+<p align="center">
+  <img src="frontend/src/assets/images/Usage.png" alt="LiteraDraw Logo" width="100%" />
+</p>
 
-(We'll add screenshots)
+For testing, we've added a hand-drawn image to our repository. You can download it and use it to test the application. [Download Drawing]()
 
 
 ## Contributors
 
-[Francis](https://github.com/francisblessedkim)  
-[Hamza](https://github.com/SelfTaught-HamzaCodes)  
-[Injila](https://github.com/injl)  
-[Jana](https://github.com/JanaDragovic)
+- [Francis](https://github.com/francisblessedkim)  
+- [Hamza](https://github.com/SelfTaught-HamzaCodes)  
+- [Injila](https://github.com/injl)  
+- [Jana](https://github.com/JanaDragovic)
 
 
 ## Credits
