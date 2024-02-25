@@ -71,6 +71,7 @@ Running on http://185.107.80.231:5000
 
 # In this example, your IPv4 address and port is 'http://185.107.80.231:5000'
 ```
+Ensure that you execute the Flask server on your local computer and utilize the Expo Go app on your mobile device, ensuring that both are connected to the same internet network.
 
 ## Frontend
 
@@ -112,6 +113,7 @@ As the server starts, a **QR code** will be displayed in your terminal. Scan thi
 - [Kid Sense: Writing Readiness (Pre-Writing) Skills](https://childdevelopment.com.au/areas-of-concern/writing/writing-readiness-pre-writing-skills/).
 
 <br>
-Thank you,          
 
+***
+Thank you,          
 **Team LiteraDraw**
