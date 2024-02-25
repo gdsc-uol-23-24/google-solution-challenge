@@ -102,7 +102,7 @@ As the server starts, a **QR code** will be displayed in your terminal. Scan thi
   <img src="frontend/src/assets/images/Usage.png" alt="LiteraDraw Logo" width="100%" />
 </p>
 
-For testing, we've added a hand-drawn image to our repository. You can download it and use it to test the application. [Download Drawing]()
+For testing, we've added a hand-drawn image to our repository. You can download it and use it to test the application. [Download Drawing](https://github.com/gdsc-uol-23-24/google-solution-challenge/blob/main/frontend/src/assets/images/Drawing.jpeg)
 
 
 ## Contributors
