@@ -3,7 +3,7 @@
 Empowering children who enter primary school at an academic disadvantage to meet key literacy benchmarks, **one drawing at a time.**
 
 <p align="center">
-  <img src="src/assets/images/literadraw-logo-large.png" alt="LiteraDraw Logo" width="25%" />
+  <img src="frontend/src/assets/images/literadraw-logo-large.png" alt="LiteraDraw Logo" width="25%" />
 </p>
 
 
@@ -112,6 +112,7 @@ As the server starts, a **QR code** will be displayed in your terminal. Scan thi
 - [Kid Sense: Writing Readiness (Pre-Writing) Skills](https://childdevelopment.com.au/areas-of-concern/writing/writing-readiness-pre-writing-skills/).
 
 <br>
-Thank you,          
 
+***
+Thank you,          
 **Team LiteraDraw**
