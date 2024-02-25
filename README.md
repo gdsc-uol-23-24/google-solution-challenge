@@ -32,6 +32,8 @@ This is a full-stack mobile application, with components divided among two folde
     - `algorithm.py`: Manages data from the backend, extracting, classifying, and assessing drawings sent from the frontend.
     - `Models` folder: Contains pre-trained models for drawing classification and assessment.
 
+- **Additional Components**
+    - The code for training our model is located on a separate branch. You can access and review it by visiting the following link: [Our Models](https://github.com/gdsc-uol-23-24/google-solution-challenge/tree/feature/how-we-train-our-model/model_training).
 
 ## Prerequisites
 
@@ -71,7 +73,7 @@ Running on http://185.107.80.231:5000
 
 # In this example, your IPv4 address and port is 'http://185.107.80.231:5000'
 ```
-Ensure that you execute the Flask server on your local computer and utilize the Expo Go app on your mobile device, ensuring that both are connected to the same internet network.
+**Ensure that you execute the Flask server on your local computer and utilize the Expo Go app on your mobile device, ensuring that both are connected to the same internet network.**
 
 ## Frontend
 
