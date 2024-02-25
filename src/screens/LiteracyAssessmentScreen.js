@@ -61,7 +61,9 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
   const generateResults = () => {
     // Check that both age and image fields are populated
     if (!selectedAge || !uploadedImage) {
-      Alert.alert("Please select age and upload an image.");
+      Alert.alert("Missing fields", 
+      `Please make sure you have selected an age group and uploaded an image.`
+      );
       return;
     }
 
