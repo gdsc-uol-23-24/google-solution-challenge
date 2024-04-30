@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, FlatList, Alert } from 'react-native';
+import { View, Text, Image, TouchableOpacity, FlatList, Alert, ActivityIndicator } from 'react-native';
 import styles from '../assets/stylesheet/styles';
 import ImagePickerButton from '../components/ImagePicker';
 import { Picker } from '@react-native-picker/picker';
@@ -13,6 +13,9 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
   const navigateToHome = () => {
     navigation.replace('Home');
   };
+
+  // State for loading
+  const [loading, setLoading] = useState(false);
 
   // States for age and uploaded image
   const [selectedAge, setSelectedAge] = useState();
@@ -66,6 +69,8 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
       );
       return;
     }
+    // Set loading to true
+    setLoading(true);
 
     // Construct the data to send to backend
     const dataToSend = {
@@ -84,6 +89,7 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
       .then(response => response.json())
       .then(data => {
         console.log('Backend response:', data);
+        setLoading(false);
         // Navigate to Results screen to display data
         navigation.navigate('Results', { responseData: data });
       })
@@ -200,7 +206,13 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
         renderItem={renderItem}
         keyExtractor={(item, index) => index.toString()}
       />
-    </View>
+      {/* Render loading indicator while model runs */}
+      {loading && (
+        <View style={styles.overlay}>
+          <ActivityIndicator size="large" />
+        </View>
+      )} 
+  </View>
   );
 };
 
