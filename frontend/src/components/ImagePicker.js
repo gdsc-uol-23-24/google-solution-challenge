@@ -35,7 +35,7 @@ const ImagePickerButton = ({ onImageSelected }) => {
 				// If an image is selected (not cancelled), 
 				// update the file state variable 
 				setFile(result.uri); 
-
+	
 				// Clear any previous errors 
 				setError(null); 
 				onImageSelected(result);
@@ -45,26 +45,13 @@ const ImagePickerButton = ({ onImageSelected }) => {
 
     return ( 
         <View>
-		{/* Button to choose an image */} 
-		<TouchableOpacity style={[styles.button]} 
-			onPress={pickImage}> 
-			<Text style={styles.buttonText}> 
-				Choose image
-			</Text> 
-		</TouchableOpacity> 
-
-		{/* Conditionally render image or error message */} 
-		{file ? ( 
-			// Display the selected image 
-			<View style={styles.imageContainer}> 
-				<Image source={{ uri: file }} 
-					style={styles.image} /> 
-			</View> 
-		) : ( 
-			// Display an error message if there's 
-			// an error or no image selected 
-			<Text style={styles.errorText}>{error}</Text> 
-		)} 
+			{/* Button to choose an image */} 
+			<TouchableOpacity style={[styles.button]} 
+				onPress={pickImage}> 
+				<Text style={styles.buttonText}> 
+					Choose Image
+				</Text> 
+			</TouchableOpacity> 
         </View>
 	);
 };
