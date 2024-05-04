@@ -46,7 +46,7 @@ const ImagePickerButton = ({ onImageSelected }) => {
     return ( 
         <View>
 			{/* Button to choose an image */} 
-			<TouchableOpacity style={[styles.button]} 
+			<TouchableOpacity style={[styles.button, {marginBottom: 10}]} 
 				onPress={pickImage}> 
 				<Text style={styles.buttonText}> 
 					Choose Image

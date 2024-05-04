@@ -20,6 +20,7 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
   // States for age and uploaded image
   const [selectedAge, setSelectedAge] = useState();
   const [uploadedImage, setUploadedImage] = useState(null);
+  const [uploadedImageFileName, setUploadedImageFileName] = useState(null);
 
   // Handle image selection from ImagePicker
   const handleImageUpload = async (imageData) => {
@@ -31,6 +32,10 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
 
       // Extract URI from object
       const uri = imageData.assets[0].uri;
+      // Store URI
+      const uriParts = uri.split('/');
+      const fileName = uriParts[uriParts.length - 1];
+      setUploadedImageFileName(fileName);
 
       // Convert selected image to base64
       const base64Image = await imageToBase64(uri);
@@ -164,6 +169,16 @@ const LiteracyAssessmentScreen = ({ navigation }) => {
             to the drawing to avoid distortion or shadows.
           </Text>
           <ImagePickerButton onImageSelected={handleImageUpload} />
+          {/* Display "no image" if nothing is selected, else show file name */}
+          {uploadedImageFileName ? (
+            <Text style={[styles.info, {marginBottom: 30}]}>
+              {uploadedImageFileName}
+            </Text>
+          ) : (
+            <Text style={[styles.info, {marginBottom: 30}]}>
+              Please upload an image of the drawing.
+            </Text>
+          )}
         </>
       ),
     },
