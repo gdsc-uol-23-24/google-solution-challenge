@@ -31,7 +31,7 @@ const AppNavigator = () => {
           })}
         />
         <Stack.Screen
-          name='Home'
+          name='Literacy Assessment'
           component={HomeScreen}
           options={({ route }) => ({
             headerStyle: {
