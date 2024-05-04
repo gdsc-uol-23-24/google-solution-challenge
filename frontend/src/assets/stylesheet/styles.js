@@ -45,6 +45,22 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginBottom: 10,
   },
+  resourceContainer: {
+    width: 300,
+    margin: 5,
+    padding: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'white',
+    elevation: 5,
+    borderRadius: 10,
+  },
+  resourceImage: {
+    width: 275,
+    height: 165,
+    borderRadius: 10,
+    marginTop: 8
+  },
   // ***
   // Text styles
   h1: {
@@ -61,6 +77,13 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginBottom: 10,
   },
+  h3: {
+      fontSize: 20,
+      fontFamily: 'DMSans_700Bold',
+      textAlign: 'left',
+      marginTop: 10,
+      marginBottom: 5,
+  },
   body: {
     fontSize: 18,
     fontFamily: 'DMSans_400Regular',
@@ -90,6 +113,16 @@ const styles = StyleSheet.create({
     fontFamily: 'DMSans_700Bold',
     color: 'white',
   },
+  overlay: {
+    position: 'absolute',
+    backgroundColor: '#FFFFFF95', // white overlay
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
   // ***
   // Image styles
   imageContainer: {
