@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Image, FlatList } from 'react-native';
 import styles from '../assets/stylesheet/styles';
+//import { useNavigation } from '@react-navigation/native';
 
 const HomeScreen = ({ navigation }) => {
   const navigateToAssessment = () => {
@@ -8,36 +9,48 @@ const HomeScreen = ({ navigation }) => {
     navigation.replace('Literacy Assessment');
   };
 
+  const navigateToResource1 = () => {
+    // Navigate to Resource 1 screen
+    navigation.replace('Resource 1');
+  };
+
+  const navigateToResource2 = () => {
+    // Navigate to Resource 1 screen
+    navigation.replace('Resource 2');
+  };
+
+  //const nav = useNavigation();
+
   // Resources list
   const resources = [
     {
       id: 1,
       content: (
-        <>
-        <Image
-          source={require('../assets/images/resource1.png')}
-          style={styles.resourceImage}
-        />
-        <Text style={styles.h3}>
-          Improving Literacy Through Art: The Battelle Developmental Inventory
-        </Text>
-        </>
+        <TouchableOpacity onPress={navigateToResource1}>
+          <Image
+            source={require('../assets/images/resource1.png')}
+            style={styles.resourceImage}
+          />
+          <Text style={styles.h3}>
+            Improving Literacy Through Art: The Battelle Developmental Inventory
+          </Text>
+        </TouchableOpacity>
       ),
     },
     {
       id: 2,
       content: (
-        <>
-        <Image
-          source={require('../assets/images/resource2.png')}
-          style={styles.resourceImage}
-        />
-        <Text style={styles.h3}>
-          Literacy Disparity Report 2024: United Nations Statistics
-        </Text>
-        </>
+        <TouchableOpacity onPress={() => nav.navigate('ResourceScreen2.js')}>
+          <Image
+            source={require('../assets/images/resource2.png')}
+            style={styles.resourceImage}
+          />
+          <Text style={styles.h3}>
+            Literacy Disparity Report 2024: United Nations Statistics
+          </Text>
+        </TouchableOpacity>
       ),
-    }
+    },
   ];
 
   // Function to render each resource
