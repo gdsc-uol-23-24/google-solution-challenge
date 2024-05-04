@@ -32,7 +32,7 @@ const AppNavigator = () => {
         />
         <Stack.Screen
           name='Literacy Assessment'
-          component={HomeScreen}
+          component={LiteracyAssessmentScreen}
           options={({ route }) => ({
             headerStyle: {
               backgroundColor: '#A4BBF4',
