@@ -90,8 +90,6 @@ class ShapeClassifier:
         # filter contours to avoid saving noise or very small artifacts as separate images
         filtered_contours = [contour for contour in contours if len(contour) > 100]
 
-        print(len(filtered_contours))
-
         for n, contour in enumerate(filtered_contours):
             # find the bounding box around the contour
             min_row, max_row, min_col, max_col = (
