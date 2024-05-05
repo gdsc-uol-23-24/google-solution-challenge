@@ -1,34 +1,45 @@
 import React from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, Image } from 'react-native';
 
 import styles from '../assets/stylesheet/styles';
 
 const ResultsScreen = ({ route }) => {
     // Retrieve the responseData from the navigation props
     const { responseData } = route.params;
-
-    // Now you can use the responseData in your component
-
     console.log('Received data in Results screen:', responseData);
+
+    // Shape images
 
     return (
         <ScrollView contentContainerStyle={[styles.resultsContainer]}>
             {/* Render required results */}
-            <Text style={styles.resultsTitle}>Drawing Analysis</Text>
-            <Text style={[styles.body, { marginBottom: 20 }]}>
+            <Text style={styles.resultsTitle}>Literacy Report</Text>
+            <Text style={[styles.info, { marginBottom: 20, textAlign: 'left' }]}>
                 Based on the drawing provided, these are your student's scores
                 for the pre-writing shapes that most children in the {responseData.age_group} age group
                 have typically mastered.
             </Text>
             {responseData.requirements_met.map((requirement, index) => (
                 <View key={index} style={[styles.resultItem, { backgroundColor: '#F0F4FD' }]}>
-                    <Text style={[styles.shapeName]}>
-                        {/* Convert first letter to uppercase */}
-                        {requirement.shape_name.charAt(0).toUpperCase() + requirement.shape_name.slice(1)}
-                    </Text>
-                    <Text style={[styles.rating]}>Rating: {requirement.rating}/2</Text>
-                    <Text style={[styles.feedback]}>{requirement.feedback}</Text>
-
+                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                        <Image
+                            source={require('../assets/images/sampleTriangle.png')}
+                            style={{width: 90, height: 90, marginLeft: 5, marginRight: 10}}
+                        />
+                        <View style={{flexDirection: 'column'}}>
+                            <Text style={[styles.shapeName]}>
+                                {/* Convert first letter to uppercase */}
+                                {requirement.shape_name.charAt(0).toUpperCase() + requirement.shape_name.slice(1)}
+                            </Text>
+                            <Text style={[styles.rating]}>Rating: {requirement.rating}/2</Text>
+                            <Text style={[styles.rating, {fontSize: 16, marginTop: 5, marginBottom: 10}]}>
+                                🥳 Almost there!
+                            </Text>
+                        </View>
+                    </View>
+                    <View style={{flexDirection: 'column'}}>
+                        <Text style={[styles.feedback]}>{requirement.feedback}</Text>
+                    </View>
                 </View>
             ))}
             {/* Conditionally render extra feedback */}
