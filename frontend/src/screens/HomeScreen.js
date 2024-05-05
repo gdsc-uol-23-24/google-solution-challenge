@@ -19,8 +19,6 @@ const HomeScreen = ({ navigation }) => {
     navigation.replace('Resource 2');
   };
 
-  //const nav = useNavigation();
-
   // Resources list
   const resources = [
     {
@@ -40,7 +38,7 @@ const HomeScreen = ({ navigation }) => {
     {
       id: 2,
       content: (
-        <TouchableOpacity onPress={() => nav.navigate('ResourceScreen2.js')}>
+        <TouchableOpacity onPress={navigateToResource2}>
           <Image
             source={require('../assets/images/resource2.png')}
             style={styles.resourceImage}
