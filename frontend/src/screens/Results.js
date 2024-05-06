@@ -9,6 +9,9 @@ const ResultsScreen = ({ route }) => {
     console.log('Received data in Results screen:', responseData);
 
     // Shape images
+    const c = "circle";
+    const s = "square";
+    const t = "triangle";
 
     return (
         <ScrollView contentContainerStyle={[styles.resultsContainer]}>
@@ -22,10 +25,25 @@ const ResultsScreen = ({ route }) => {
             {responseData.requirements_met.map((requirement, index) => (
                 <View key={index} style={[styles.resultItem, { backgroundColor: '#F0F4FD' }]}>
                     <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                        <Image
+                        {requirement.shape_name == "circle" ? (
+                            <Image
+                            source={require('../assets/images/sampleCircle.png')}
+                            style={{width: 90, height: 90, marginLeft: 5, marginRight: 10}}
+                            />
+                        ) : requirement.shape_name == "square" ? (
+                            <Image
+                            source={require('../assets/images/sampleSquare.png')}
+                            style={{width: 90, height: 90, marginLeft: 5, marginRight: 10}}
+                            />
+                        ) : requirement.shape_name == "triangle" ? (
+                            <Image
                             source={require('../assets/images/sampleTriangle.png')}
                             style={{width: 90, height: 90, marginLeft: 5, marginRight: 10}}
-                        />
+                            />
+                        ) : (
+                            <Text>Unknown shape</Text>
+                        )
+                    }
                         <View style={{flexDirection: 'column'}}>
                             <Text style={[styles.shapeName]}>
                                 {/* Convert first letter to uppercase */}
@@ -33,12 +51,12 @@ const ResultsScreen = ({ route }) => {
                             </Text>
                             <Text style={[styles.rating]}>Rating: {requirement.rating}/2</Text>
                             <Text style={[styles.rating, {fontSize: 16, marginTop: 5, marginBottom: 10}]}>
-                                🥳 Almost there!
+                                {requirement.feedback[0]}
                             </Text>
                         </View>
                     </View>
                     <View style={{flexDirection: 'column'}}>
-                        <Text style={[styles.feedback]}>{requirement.feedback}</Text>
+                        <Text style={[styles.feedback]}>{requirement.feedback[1]}</Text>
                     </View>
                 </View>
             ))}
