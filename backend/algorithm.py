@@ -175,67 +175,27 @@ class ShapeClassifier:
         feedback_dicts = {
             "circle": {
                 0: ["😅 Practice hard!",
-                    "Circles play a crucial role in forming letters\
-                    such as 'O/o', 'P/p', 'Q/q' and 'C/c', which your\
-                    student may struggle considerably with when starting\
-                    to write. Focus on this shape with them to boost their\
-                    confidence and help them develop the foundational skills\
-                    necessary for literacy."],
+                    "Circles play a crucial role in forming letters such as 'O/o', 'P/p', 'Q/q' and 'C/c', which your student may struggle considerably with when starting to write. Focus on this shape with them to boost their confidence and help them develop the foundational skills necessary for literacy."],
                 1: ["😄 Almost there!", 
-                    "Circles play a crucial role in forming letters\
-                    such as 'O/o', 'P/p', 'Q/q' and 'C/c', which your\
-                    student may run into some trouble with when starting\
-                    to write. With just a bit more practice, they can meet\
-                    the pre-writing expectations for circles for their age."],
+                    "Circles play a crucial role in forming letters such as 'O/o', 'P/p', 'Q/q' and 'C/c', which your student may run into some trouble with when starting to write. With just a bit more practice, they can meet the pre-writing expectations for circles for their age."],
                 2: ["🥳 Perfect!",
-                    "Circles play a crucial role in forming letters\
-                    such as 'O/o', 'P/p', 'Q/q' and 'C/c', which your\
-                    student can easily master. They are on track for\
-                    pre-writing expectations for circles for their age."]
+                    "Circles play a crucial role in forming letters such as 'O/o', 'P/p', 'Q/q' and 'C/c', which your student can easily master. They are on track for pre-writing expectations for circles for their age."]
             },
             "square": {
                 0: ["😅 Practice hard!",
-                    "Squares are the building blocks for letters such\
-                    as 'E', 'F', 'H', 'I/i', 'L/l', and 'T/t', which\
-                    your student may struggle considerably with\
-                    when starting to write. Focus on this shape with\
-                    them to boost their confidence and help them develop\
-                    the foundational skills necessary for literacy."],
+                    "Squares are the building blocks for letters such as 'E', 'F', 'H', 'I/i', 'L/l', and 'T/t', which your student may struggle considerably with when starting to write. Focus on this shape with them to boost their confidence and help them develop the foundational skills necessary for literacy."],
                 1: ["😄 Almost there!", 
-                    "Squares are the building blocks for letters\
-                    such as 'E', 'F', 'H', 'I/i', 'L/l', and 'T/t',\
-                    which your student may run into some trouble with\
-                    when starting to write. With just a bit more practice,\
-                    they can meet the pre-writing expectations for squares\
-                    for their age."],
+                    "Squares are the building blocks for letters such as 'E', 'F', 'H', 'I/i', 'L/l', and 'T/t', which your student may run into some trouble with when starting to write. With just a bit more practice, they can meet the pre-writing expectations for squares for their age."],
                 2: ["🥳 Perfect!",
-                    "Squares are the building blocks for letters\
-                    such as 'E', 'F', 'H', 'I/i', 'L/l', and 'T/t',\
-                    which your student can easily master. They are on\
-                    track for pre-writing expectations for squares for\
-                    their age."]
+                    "Squares are the building blocks for letters such as 'E', 'F', 'H', 'I/i', 'L/l', and 'T/t', which your student can easily master. They are on track for pre-writing expectations for squares for their age."]
             },
             "triangle": {
                 0: ["😅 Practice hard!",
-                    "Triangles are critical for letters such as 'A',\
-                    'M', 'N', 'V/v', 'W/w', 'X/x', 'Y/y', and 'Z/z',\
-                    which your student may struggle considerably with\
-                    when starting to write. Focus on this shape with\
-                    them to boost their confidence and help them develop\
-                    the foundational skills necessary for literacy."],
+                    "Triangles are critical for letters such as 'A', 'M', 'N', 'V/v', 'W/w', 'X/x', 'Y/y', and 'Z/z', which your student may struggle considerably with when starting to write. Focus on this shape with them to boost their confidence and help them develop the foundational skills necessary for literacy."],
                 1: ["😄 Almost there!", 
-                    "Triangles are critical for letters such as 'A',\
-                    'M', 'N', 'V/v', 'W/w', 'X/x', 'Y/y', and 'Z/z',\
-                    which your student may run into some trouble with\
-                    when starting to write. With just a bit more practice,\
-                    they can meet the pre-writing expectations for triangles\
-                    for their age."],
+                    "Triangles are critical for letters such as 'A', 'M', 'N', 'V/v', 'W/w', 'X/x', 'Y/y', and 'Z/z', which your student may run into some trouble with when starting to write. With just a bit more practice, they can meet the pre-writing expectations for triangles for their age."],
                 2: ["🥳 Perfect!",
-                    "Triangles are critical for letters such as 'A',\
-                    'M', 'N', 'V/v', 'W/w', 'X/x', 'Y/y', and 'Z/z',\
-                    which your student can easily master. They are on\
-                    track for pre-writing expectations for triangles for\
-                    their age."]
+                    "Triangles are critical for letters such as 'A', 'M', 'N', 'V/v', 'W/w', 'X/x', 'Y/y', and 'Z/z', which your student can easily master. They are on track for pre-writing expectations for triangles for their age."]
             }
         }
 
