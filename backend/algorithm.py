@@ -172,19 +172,28 @@ class ShapeClassifier:
         # Feedback for each shape (I will add new ones, let it be like this for now)
         feedback_dicts = {
             "circle": {
-                0: "No sun shape is detected. This student has not met the pre-writing circle expectations for their age group. \n • Circles play a crucial role in forming letters such as 'O/o', 'P/p', 'Q/q' and 'C/c'. Focusing on this shape with your student can significantly boost their confidence and develop the foundational skills necessary for writing proficiency.",
-                1: "Sun shape is detected. This student is close to meeting pre-writing expectations for circles for their age. \n • Circles play a crucial role in forming letters such as 'O/o', 'P/p', 'Q/q' and 'C/c'. With a bit more practice, your student will be excellent. Keep up the good work!",
-                2: "Amazing! Sun shape is detected. This student meets pre-writing expectations for circles for their age. \n • Circles play a crucial role in forming letters such as 'O/o', 'P/p', 'Q/q' and 'C/c'. Great job on building such a strong foundation for your students' writing skills!"
+                0: ["😅 Practice hard!",
+                    "Circles play a crucial role in forming letters such as 'O/o', 'P/p', 'Q/q' and 'C/c', which your student may struggle considerably with when starting to write. Focus on this shape with them to boost their confidence and help them develop the foundational skills necessary for literacy."],
+                1: ["😄 Almost there!", 
+                    "Circles play a crucial role in forming letters such as 'O/o', 'P/p', 'Q/q' and 'C/c', which your student may run into some trouble with when starting to write. With just a bit more practice, they can meet the pre-writing expectations for circles for their age."],
+                2: ["🥳 Perfect!",
+                    "Circles play a crucial role in forming letters such as 'O/o', 'P/p', 'Q/q' and 'C/c', which your student can easily master. They are on track for pre-writing expectations for circles for their age."]
             },
             "square": {
-                0: "No house is detected. This student has not met the pre-writing square expectations for their age group. \n • Squares are the building blocks for letters such as 'E', 'F', 'H', 'I/i', 'L/l', and 'T/t'. Working on this shape with your student can notably increase their confidence and establish the basic skills critical for their success in writing.",
-                1: "House shape is detected. This student is close to meeting pre-writing expectations for squares for their age. \n • Squares are the building blocks for letters such as 'E', 'F', 'H', 'I/i', 'L/l', and 'T/t'. With just a little more practice, your student will excel. Keep up the excellent work!",
-                2: "Congratulations! House shape is detected. This student meets pre-writing expectations for squares for their age. \n • Squares are the building blocks for letters such as 'E', 'F', 'H', 'I/i', 'L/l', and 'T/t'. Excellent job in creating a strong base for your students' writing capabilities!"
+                0: ["😅 Practice hard!",
+                    "Squares are the building blocks for letters such as 'E', 'F', 'H', 'I/i', 'L/l', and 'T/t', which your student may struggle considerably with when starting to write. Focus on this shape with them to boost their confidence and help them develop the foundational skills necessary for literacy."],
+                1: ["😄 Almost there!", 
+                    "Squares are the building blocks for letters such as 'E', 'F', 'H', 'I/i', 'L/l', and 'T/t', which your student may run into some trouble with when starting to write. With just a bit more practice, they can meet the pre-writing expectations for squares for their age."],
+                2: ["🥳 Perfect!",
+                    "Squares are the building blocks for letters such as 'E', 'F', 'H', 'I/i', 'L/l', and 'T/t', which your student can easily master. They are on track for pre-writing expectations for squares for their age."]
             },
             "triangle": {
-                0: "No roof is detected. This student has not met the pre-writing triangle expectations for their age group. \n • Triangles are crucial for letters such as 'A', 'M', 'N', 'V/v', 'W/w', 'X/x', 'Y/y', and 'Z/z'. Concentrating on this shape with your student can greatly enhance their confidence and build the essential skills needed for writing proficiency.",
-                1: "Roof is detected. This student is close to meeting pre-writing expectations for triangles for their age. \n • Triangles are crucial for letters such as 'A', 'M', 'N', 'V/v', 'W/w', 'X/x', 'Y/y', and 'Z/z'. A bit more practice, and your student will be excellent. Continue the fantastic effort!",
-                2: "Marvelous! Roof is detected. This student meets pre-writing expectations for triangles for their age. \n • Triangles are crucial for letters such as 'A', 'M', 'N', 'V/v', 'W/w', 'X/x', 'Y/y', and 'Z/z'. Fantastic work in laying a solid groundwork for your students' writing abilities!"
+                0: ["😅 Practice hard!",
+                    "Triangles are critical for letters such as 'A', 'M', 'N', 'V/v', 'W/w', 'X/x', 'Y/y', and 'Z/z', which your student may struggle considerably with when starting to write. Focus on this shape with them to boost their confidence and help them develop the foundational skills necessary for literacy."],
+                1: ["😄 Almost there!", 
+                    "Triangles are critical for letters such as 'A', 'M', 'N', 'V/v', 'W/w', 'X/x', 'Y/y', and 'Z/z', which your student may run into some trouble with when starting to write. With just a bit more practice, they can meet the pre-writing expectations for triangles for their age."],
+                2: ["🥳 Perfect!",
+                    "Triangles are critical for letters such as 'A', 'M', 'N', 'V/v', 'W/w', 'X/x', 'Y/y', and 'Z/z', which your student can easily master. They are on track for pre-writing expectations for triangles for their age."]
             }
         }
 

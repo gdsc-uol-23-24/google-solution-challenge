@@ -175,13 +175,13 @@ const styles = StyleSheet.create({
   shapeName: {
     fontSize: 20,
     fontFamily: 'DMSans_700Bold',
-    marginBottom: 5, // Space between the shape name and its rating/feedback
+    marginBottom: 0, // Space between the shape name and its rating/feedback
   },
   rating: {
     fontSize: 18,
     fontFamily: 'DMSans_400Regular',
     color: '#666',
-    marginBottom: 5,
+    marginBottom: 0,
   },
   feedback: {
     fontSize: 16,
