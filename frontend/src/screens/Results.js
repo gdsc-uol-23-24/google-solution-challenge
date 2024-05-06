@@ -8,11 +8,6 @@ const ResultsScreen = ({ route }) => {
     const { responseData } = route.params;
     console.log('Received data in Results screen:', responseData);
 
-    // Shape images
-    const c = "circle";
-    const s = "square";
-    const t = "triangle";
-
     return (
         <ScrollView contentContainerStyle={[styles.resultsContainer]}>
             {/* Render required results */}
