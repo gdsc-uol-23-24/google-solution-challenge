@@ -13,6 +13,7 @@ LiteraDraw is an Android-first mobile application, built to assess and provide f
 
 The application utilizes image processing and machine learning techniques to classify, extract, and rate these drawn shapes in accordance with the **Battelle guide**, offering insights to adult users on the development status of the child's pre-literacy skills. Included within these insights are further recommendations for the child based on their perceived strengths and weaknesses, which serve as a crucial starting point to bridge the gap between their current and expected literacy level.
 
+🌐 [Visit our website](https://gdsc-uol-23-24.github.io/literadraw-landing_page/) to discover more!
 
 ## Project structure
 
@@ -86,7 +87,9 @@ Install the required packages for the frontend by running:
 This may take a little bit of time, but will eventually generate a folder called `node_modules` in your frontend folder, based on the dependencies specified in the `package-lock.json` file.
 
 Next, in your IDE, open ./src/screens/LiteracyAssessment.js, and **initialize the `backendUrl` variable** in **line 9** to the same IPv4 address returned by your Flask server. It will look something like this:
-> `const backendUrl = http://185.107.80.231:5000`
+> `const backendUrl = http://185.107.80.231:5000/api/process_data`
+
+The IPv4 address would be followed by the end-point `/api/process_data` as shown above.
 
 Now that you’re set up, you can use the Expo CLI to launch the app by leveraging `npx`, a Node.js package runner. View the list of available commands by running:
 > `npx expo --help`
@@ -99,7 +102,7 @@ As the server starts, a **QR code** will be displayed in your terminal. Scan thi
 
 ## Usage
 <p align="center">
-  <img src="frontend/src/assets/images/Usage.png" alt="LiteraDraw Logo" width="100%" />
+  <img src="frontend/src/assets/images/New-Usage.png" alt="LiteraDraw Logo" width="100%" />
 </p>
 
 For testing, we've added a hand-drawn image to our repository. You can download it and use it to test the application. [Download Drawing](https://github.com/gdsc-uol-23-24/google-solution-challenge/blob/main/frontend/src/assets/images/Drawing.jpeg)
