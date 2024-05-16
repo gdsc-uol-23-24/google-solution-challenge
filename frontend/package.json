@@ -12,23 +12,22 @@
     "@expo-google-fonts/dm-sans": "^0.2.3",
     "@expo-google-fonts/roboto": "^0.2.3",
     "@expo-google-fonts/roboto-condensed": "^0.2.3",
+    "@expo/metro-runtime": "~3.2.1",
+    "@react-native-picker/picker": "2.7.5",
     "@react-navigation/native": "^6.1.10",
     "@react-navigation/stack": "^6.3.21",
-    "expo": "~50.0.6",
-    "expo-font": "~11.10.3",
-    "expo-image-picker": "^14.7.1",
-    "expo-status-bar": "~1.11.1",
+    "expo": "~51.0.7",
+    "expo-file-system": "~17.0.1",
+    "expo-image-picker": "~15.0.5",
+    "expo-status-bar": "~1.12.1",
     "react": "18.2.0",
-    "react-native": "0.73.4",
-    "react-native-gesture-handler": "^2.14.0",
-    "@react-native-picker/picker": "2.6.1",
-    "expo-file-system": "~16.0.6",
-    "react-native-web": "~0.19.6",
     "react-dom": "18.2.0",
-    "@expo/metro-runtime": "~3.1.3"
+    "react-native": "0.74.1",
+    "react-native-gesture-handler": "~2.16.1",
+    "react-native-web": "~0.19.6"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0"
+    "@babel/core": "^7.24.0"
   },
   "private": true
 }
